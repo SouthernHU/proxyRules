@@ -42,7 +42,6 @@
 +.*.mesh.com
 +.p.sfx.ms
 +.oneclient.sfx.ms
-+.*.microsoft.com
 +.fabric.io
 +.*.crashlytics.com
 +.vortex.data.microsoft.com
