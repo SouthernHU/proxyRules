@@ -33,6 +33,9 @@ PROCESS-NAME,org.telegram.messenger
 2001:67c:4e8::/48
 2001:b28:f23d::/48
 2001:b28:f23f::/48
+149.154.167.41
+149.154.167.151
+91.108.56.118
 # 微软
 +.api.msn.com
 +.api.statsig.com
