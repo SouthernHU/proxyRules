@@ -21,12 +21,12 @@
 # Telegram
 PROCESS-NAME,Telegram.exe
 PROCESS-NAME,org.telegram.messenger
-+.t.me
-+.tdesktop.com
-+.telegra.ph
-+.telegram.me
-+.telegram.org
-+.telesco.pe
++.t.me,no-resolve
++.tdesktop.com,no-resolve
++.telegra.ph,no-resolve
++.telegram.me,no-resolve
++.telegram.org,no-resolve
++.telesco.pe,no-resolve
 91.108.0.0/16
 109.239.140.0/24
 149.154.160.0/20
