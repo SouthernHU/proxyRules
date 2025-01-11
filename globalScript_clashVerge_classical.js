@@ -149,15 +149,6 @@ function main(config) {
   config["proxy-groups"] = [
     {
       ...groupBaseOption,
-      name: "学术网站",
-      type: "select",
-      proxies: ["DIRECT"],
-      "include-all": false,
-      icon: "https://raw.githubusercontent.com/shindgewongxj/WHATSINStash/refs/heads/main/icon/applebooks.png",
-    },
-
-    {
-      ...groupBaseOption,
       // 支持的国家中选择延迟最低的,并排除低倍速率节点
       name: "GPTs",
       "type": "url-test",
