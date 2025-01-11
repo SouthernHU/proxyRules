@@ -44,13 +44,6 @@ const ruleProviderCommon = {
 };
 // 规则集配置
 const ruleProviders = {
-  academic: {
-    ...ruleProviderCommon,
-    behavior: "domain",
-    format: "text",
-    url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/academic.txt",
-    path: "./rulesets/southernhu/academic.txt",
-  },
   ChinaDomainLite: {
     ...ruleProviderCommon,
     behavior: "domain",
@@ -58,11 +51,11 @@ const ruleProviders = {
     url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/ChinaDomainLite.txt",
     path: "./rulesets/southernhu/ChinaDomainLite.txt",
   },
-  overseasLite: {
+  GFWLite: {
     ...ruleProviderCommon,
     behavior: "domain",
     format: "text",
-    url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/overseasLite.txt",
+    url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/GFWLite.txt",
     path: "./rulesets/southernhu/overseasLite.txt",
   },
   GPTs: {
@@ -72,11 +65,11 @@ const ruleProviders = {
     url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/GPTs.txt",
     path: "./rulesets/southernhu/GPTs.txt",
   },
-  overseasMedia: {
+  GFWMedia: {
     ...ruleProviderCommon,
     behavior: "domain",
     format: "text",
-    url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/overseaMedia.txt",
+    url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/GFWMedia.txt",
     path: "./rulesets/southernhu/overseasMedia.txt",
   },
   ADBlocking: {
@@ -86,7 +79,7 @@ const ruleProviders = {
     url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt",
     path: "./rulesets/southernhu/ADBlocking.txt",
   },
-  overSeaFull_ACL4SSR: {
+  GFW_ACL4SSR: {
     ...ruleProviderCommon,
     behavior: "domain",
     format: "yaml",
@@ -107,15 +100,13 @@ const rules = [
   "GEOIP,LAN,DIRECT,no-resolve",
   "GEOIP,CN,DIRECT,no-resolve",
   //自定义规则
-  "RULE-SET,academic,学术网站",
   "RULE-SET,ChinaDomainLite,国内常用,no-resolve",
   "RULE-SET,GPTs,GPTs,no-resolve",
-  "RULE-SET,overseasLite,海外常用,no-resolve",
-  "RULE-SET,GFWPatch,海外常用,no-resolve",
-  "RULE-SET,overseasMedia,海外流媒体,no-resolve",
+  "RULE-SET,GFWLite,海外常用,no-resolve",
+  "RULE-SET,GFWMedia,海外流媒体,no-resolve",
+  "RULE-SET,GFWPatch,海外完整,no-resolve",
   "RULE-SET,overSeaFull_ACL4SSR,海外完整,no-resolve",
   "RULE-SET,ADBlocking,全局拦截",
-
 ];
 // 代理组通用配置
 const groupBaseOption = {

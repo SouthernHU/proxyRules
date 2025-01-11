@@ -1,4 +1,4 @@
-# 本list存储常用的国外网站，以加快检索速度
+# 国外常用
 +.google.com
 +.googleapis.com
 +.fonts.googleapis.com
@@ -18,6 +18,7 @@
 +.xn--ngstr-lra8j.com
 +.github.io
 +.v2rayse.com
+
 # Telegram
 PROCESS-NAME,Telegram.exe
 PROCESS-NAME,org.telegram.messenger
@@ -36,6 +37,7 @@ PROCESS-NAME,org.telegram.messenger
 149.154.167.41
 149.154.167.151
 91.108.56.118
+
 # 微软
 +.api.msn.com
 +.api.statsig.com
@@ -85,14 +87,18 @@ PROCESS-NAME,org.telegram.messenger
 +.turn.livekit.cloud
 24.199.123.28/32
 64.23.132.171/32
+
 # Apple
 +.tv.apple.com
+
 # 电子书网站
 +.libgen.is
 +.zlibrary.org
 +.z-lib.io
+
 # Arc浏览器
 +.arc.net
+
 # Steam
 +.fanatical.com
 +.humblebundle.com
@@ -123,7 +129,6 @@ PROCESS-NAME,org.telegram.messenger
 +.steamstore-a.akamaihd.net
 +.steamusercontent-a.akamaihd.net
 +.steamuserimages-a.akamaihd.net
+
 # 城市天际线2
 +.paradox-interactive.com
-# prepomax
-+.prepomax.fs.um.si

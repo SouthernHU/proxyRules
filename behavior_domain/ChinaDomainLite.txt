@@ -1,23 +1,58 @@
-# 国内其他常用
+# 国内常用
 +.cn
+
+# 流媒体
 +.bilibili.com
++.douyin.com
+
+# 购物
 +.taobao.com
 +.alipay.com
-+.douyin.com
-+.zhihu.com
-+.tencent.com
 +.jd.com
-+.qq.com
-+.apple.com.cn
-+.icloud.com
-+.feishu.com
-+.baidu.com
-+.amap.com
-+.yuque.com
-# NAME: XiaoHongShu
+
+# 社交
++.tencent.com
++.zhihu.com
++.xiaohongshu.com
 +.fengkongcloud.com
 +.xhscdn.com
-+.xiaohongshu.com
++.qq.com
++.feishu.com
+
+# 地图
++.amap.com
++.map.qq.com
++.baidu.com
+
+# 其他
++.yuque.com
++.icloud.com
+
+# 学术网站
++.sciencedirect.com
++.springer.com
++.asme.com
++.ieee.com
++.kns.cnki.net
++.cnki.net
++.nature.com
++.elsevier.com
++.sagepub.com 
++.mdpi.com
++.webofscience.com
++.webofknowledge.com
++.clarivate.com
++.acm.org
++.cnki.net
++.asme.org
++.scientific.net
++.heinonline.org
++.doi.org
+# Zotero
++.zotero.org
+# Elsevier投稿系统
++.editorialmanager.com
+
 # OneDrive
 +.1drv.com
 +.livefilestore.com
@@ -32,7 +67,6 @@
 +.spoprod-a.akamaihd.net
 +.storage.live.com
 +.storage.msn.com
-# 根据 https://learn.microsoft.com/en-us/sharepoint/required-urls-and-ports 新增Onedrive规则
 +.onedrive.com
 +.*.onedrive.com
 +.onedrive.live.com
@@ -88,20 +122,20 @@
 +.storage.msn.com
 +.*.storage.msn.com
 +.*.*.storage.msn.com
-# 地图类软件防止定位错误
-+.baidu.com
-+.amap.com
-+.map.qq.com
+
 # Git
 DST-PORT,22
+
 # 微软远程桌面
 DST-PORT,3389
+
 # 微软
 +.fd.api.iris.microsoft.com
 +.microsoftonline.com
 +.aadcdn.msauth.net
 +.live.com
 +.cn.bing.com
+
 # steam直连部分
 +.steamcontent.com
 +.api.steampowered.com
@@ -171,7 +205,6 @@ DST-PORT,3389
 208.64.202.0/24
 208.64.203.0/24
 208.78.164.0/22
-# steam直连补充 2024/12/14
 45.121.184.0/24
 155.133.224.0/22
 155.133.232.0/23
@@ -182,6 +215,7 @@ DST-PORT,3389
 185.25.182.0/23
 190.217.32.0/22
 208.64.200.0/22
+
 # Steam CDN
 # 白云山
 +.st.dl.eccdnx.com
@@ -195,6 +229,7 @@ DST-PORT,3389
 +.xz.pphimalayanrt.com
 +.lv.queniujq.cn
 +.alibaba.cdn.steampipe.steamcontent.com
+
 # Apple 中国大陆直连
 +.a1.mzstatic.com
 +.a2.mzstatic.com
