@@ -56,7 +56,7 @@ const ruleProviders = {
     behavior: "domain",
     format: "text",
     url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/GFWLite.txt",
-    path: "./rulesets/southernhu/overseasLite.txt",
+    path: "./rulesets/southernhu/GFWLite.txt",
   },
   GPTs: {
     ...ruleProviderCommon,
@@ -70,7 +70,7 @@ const ruleProviders = {
     behavior: "domain",
     format: "text",
     url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_domain/GFWMedia.txt",
-    path: "./rulesets/southernhu/overseasMedia.txt",
+    path: "./rulesets/southernhu/GFWMedia.txt",
   },
   ADBlocking: {
     ...ruleProviderCommon,
@@ -105,7 +105,7 @@ const rules = [
   "RULE-SET,GFWLite,海外常用,no-resolve",
   "RULE-SET,GFWMedia,海外流媒体,no-resolve",
   "RULE-SET,GFWPatch,海外完整,no-resolve",
-  "RULE-SET,overSeaFull_ACL4SSR,海外完整,no-resolve",
+  "RULE-SET,GFW_ACL4SSR,海外完整,no-resolve",
   "RULE-SET,ADBlocking,全局拦截",
 ];
 // 代理组通用配置
