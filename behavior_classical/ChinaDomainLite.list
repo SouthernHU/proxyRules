@@ -1,5 +1,6 @@
 # 国内其他常用
 GEOIP,CN
+# 互联网
 DOMAIN-KEYWORD,bilibili
 DOMAIN-KEYWORD,taobao
 DOMAIN-KEYWORD,alipay
@@ -15,18 +16,53 @@ DOMAIN-SUFFIX,feishu.com
 DOMAIN-KEYWORD,baidu
 DOMAIN-SUFFIX,amap.com
 DOMAIN-KEYWORD,yuque
-# NAME: XiaoHongShu
 DOMAIN-SUFFIX,fengkongcloud.com
 DOMAIN-SUFFIX,xhscdn.com
 DOMAIN-SUFFIX,xiaohongshu.com
-# 地图类软件防止定位错误
 DOMAIN-SUFFIX,baidu.com
 DOMAIN-SUFFIX,amap.com
 DOMAIN-SUFFIX,map.qq.com
+
+# 学术网站
+DOMAIN-SUFFIX,sciencedirect.com
+DOMAIN-SUFFIX,springer.com
+DOMAIN-SUFFIX,asme.com
+DOMAIN-SUFFIX,ieee.com
+DOMAIN-SUFFIX,kns.cnki.net
+DOMAIN-SUFFIX,cnki.net
+DOMAIN-KEYWORD,cnki
+DOMAIN-SUFFIX,nature.com
+DOMAIN-SUFFIX,elsevier.com
+DOMAIN-KEYWORD,sage
+DOMAIN-SUFFIX,mdpi.com
+DOMAIN-KEYWORD,webofscience
+DOMAIN-KEYWORD,webofknowledge
+DOMAIN-KEYWORD,clarivate
+DOMAIN-SUFFIX,webofscience.com
+DOMAIN-SUFFIX,webofknowledge.com
+DOMAIN-SUFFIX,clarivate.com
+DOMAIN-SUFFIX,sagepub.com
+DOMAIN-KEYWORD,sagepub
+DOMAIN-SUFFIX,acm.org
+DOMAIN-SUFFIX,cnki.net
+DOMAIN-SUFFIX,asme.org
+DOMAIN-KEYWORD,elsevier
+DOMAIN-SUFFIX,scientific.net
+DOMAIN-KEYWORD,heinonline
+DOMAIN-SUFFIX,doi.org
+
+# Zotero
+DOMAIN-KEYWORD,zotero
+
+# Elsevier投稿系统
+DOMAIN-SUFFIX,editorialmanager.com
+
 # Git
 DST-PORT,22
+
 # 微软远程桌面
 DST-PORT,3389
+
 # steam直连部分
 DOMAIN-SUFFIX,steamcontent.com(,no-resolve)
 DOMAIN-KEYWORD,steamcontent(,no-resolve)
@@ -97,7 +133,6 @@ IP-CIDR,208.64.201.0/24
 IP-CIDR,208.64.202.0/24
 IP-CIDR,208.64.203.0/24
 IP-CIDR,208.78.164.0/22
-# steam直连补充 2024/12/14
 IP-CIDR,45.121.184.0/24
 IP-CIDR,155.133.224.0/22
 IP-CIDR,155.133.232.0/23
@@ -108,6 +143,7 @@ IP-CIDR,162.254.192.0/21
 IP-CIDR,185.25.182.0/23
 IP-CIDR,190.217.32.0/22
 IP-CIDR,208.64.200.0/22
+
 # Steam CDN
 # 白云山
 DOMAIN,st.dl.eccdnx.com(,no-resolve)
@@ -121,6 +157,7 @@ DOMAIN,cdn-ali.content.steamchina.com(,no-resolve)
 DOMAIN,xz.pphimalayanrt.com(,no-resolve)
 DOMAIN,lv.queniujq.cn(,no-resolve)
 DOMAIN,alibaba.cdn.steampipe.steamcontent.com(,no-resolve)
+
 # Apple 中国大陆直连
 DOMAIN-SUFFIX,full:a1.mzstatic.com
 DOMAIN-SUFFIX,full:a2.mzstatic.com

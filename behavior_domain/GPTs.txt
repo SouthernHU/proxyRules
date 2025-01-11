@@ -3,6 +3,8 @@
 +.chatgpt.com
 +.openai.com
 +.chat.openai.com
+# perplexityAi
++.perplexity
 # ChatGPT第三方Windows客户端https://github.com/lencx/ChatGPT
 PROCESS-NAME,msedgewebview2.exe
 # poe

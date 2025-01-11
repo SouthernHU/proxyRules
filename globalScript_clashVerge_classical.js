@@ -44,13 +44,6 @@ const ruleProviderCommon = {
 };
 // 规则集配置
 const ruleProviders = {
-  academic: {
-    ...ruleProviderCommon,
-    behavior: "classical",
-    format: "text",
-    url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/academic.list",
-    path: "./rulesets/southernhu/academic.list",
-  },
   ChinaDomainLite: {
     ...ruleProviderCommon,
     behavior: "classical",
@@ -58,26 +51,26 @@ const ruleProviders = {
     url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/ChinaDomainLite.list",
     path: "./rulesets/southernhu/ChinaDomainLite.list",
   },
-  overseasLite: {
+  GFWLite: {
     ...ruleProviderCommon,
     behavior: "classical",
     format: "text",
-    url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/overseasLite.list",
-    path: "./rulesets/southernhu/overseasLite.list",
+    url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/GFWLite.list",
+    path: "./rulesets/southernhu/GFWLite.list",
   },
-  ipAssigned: {
+  GPTs: {
     ...ruleProviderCommon,
     behavior: "classical",
     format: "text",
-    url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/ipAssigned.list",
-    path: "./rulesets/southernhu/ipAssigned.list",
+    url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/GPTs.list",
+    path: "./rulesets/southernhu/GPTs.list",
   },
-  overseasMedia: {
+  GFWMedia: {
     ...ruleProviderCommon,
     behavior: "classical",
     format: "text",
     url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/overseasMedia.list",
-    path: "./rulesets/southernhu/overseasMedia.list",
+    path: "./rulesets/southernhu/GFWMedia.list",
   },
   ADBlocking: {
     ...ruleProviderCommon,
@@ -116,14 +109,12 @@ const rules = [
   "GEOIP,LAN,DIRECT,no-resolve",
   "GEOIP,CN,DIRECT,no-resolve",
   //自定义规则
-
-  "RULE-SET,academic,学术网站",
-  "RULE-SET,ChinaDomainLite,国内常用",
-  "RULE-SET,ipAssigned,GPTs",
-  "RULE-SET,overseasLite,海外常用",
-  "RULE-SET,GFWPatch,海外常用",
-  "RULE-SET,overseasMedia,海外流媒体",
-  "RULE-SET,overSeaFull_ACL4SSR,海外完整",
+  "RULE-SET,ChinaDomainLite,国内常用,no-resolve",
+  "RULE-SET,GPTs,GPTs,no-resolve",
+  "RULE-SET,GFWLite,海外常用,no-resolve",
+  "RULE-SET,GFWMedia,海外流媒体,no-resolve",
+  "RULE-SET,GFWPatch,海外完整,no-resolve",
+  "RULE-SET,GFW_ACL4SSR,海外完整,no-resolve",
   "RULE-SET,ADBlocking,全局拦截",
 
 ];
@@ -167,11 +158,11 @@ function main(config) {
 
     {
       ...groupBaseOption,
-      // 支持的国家中选择延迟最低的，并排除低倍速率节点
+      // 支持的国家中选择延迟最低的,并排除低倍速率节点
       name: "GPTs",
       "type": "url-test",
-      "tolerance": 100,  // 延迟容忍度，超过150ms的节点将被淘汰
-      "fallback": 10,  // 备用节点数量，保留延迟最低的10个节点
+      "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+      "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
       "interval": 5,  // 每5秒测速一次
       // 美国|新加坡|韩国|澳大利亚|台湾|日本|德国
       "filter": gptRegion,
@@ -191,8 +182,8 @@ function main(config) {
       // 高速节点中选择延迟最低的
       name: "海外常用",
       "type": "url-test",
-      "tolerance": 100,  // 延迟容忍度，超过150ms的节点将被淘汰
-      "fallback": 10,  // 备用节点数量，保留延迟最低的10个节点
+      "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+      "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
       "interval": 5,  // 每300秒测速一次
       "filter": fastFillter, // 匹配高速节点
       "include-all": true,
@@ -229,7 +220,7 @@ function main(config) {
       ...groupBaseOption,
       name: "节点选择",
       "type": "url-test",
-      proxies: ["延迟选优", "故障转移", "负载均衡(散列)", "负载均衡(轮询)"],
+      proxies: ["负载均衡(散列)","延迟选优","负载均衡(轮询)","故障转移"],
       "include-all": true,
       url: "http://www.gstatic.com/generate_204",
       interval: 5,
@@ -267,6 +258,9 @@ function main(config) {
       type: "load-balance",
       strategy: "round-robin",
       "include-all": true,
+      "hidden": true,
+      icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
+    },   "include-all": true,
       "hidden": true,
       icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
     },

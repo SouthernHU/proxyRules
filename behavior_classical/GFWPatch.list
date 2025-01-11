@@ -6,15 +6,15 @@ DOMAIN,xn--mes358acgm99l.com
 DOMAIN-KEYWORD,hxlm
 # Clash规则更新
 DOMAIN-SUFFIX,api.dler.io
-# perplexityAi
-DOMAIN-KEYWORD,perplexity
+
 # Clash verge
 DOMAIN-SUFFIX,clashverge.dev
+
 # 虚空终端文档
 DOMAIN-SUFFIX,wiki.metacubex.one
 DOMAIN-SUFFIX,stash.wiki
+
 # 内容：GoogleFCM 谷歌推送服务
-# 数量：35条
 DOMAIN,alt1-mtalk.google.com
 DOMAIN,alt2-mtalk.google.com
 DOMAIN,alt3-mtalk.google.com

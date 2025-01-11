@@ -8,9 +8,6 @@
 # Clash规则更新
 +.api.dler.io
 
-# perplexityAi
-+.perplexity
-
 # Clash verge
 +.clashverge.dev
 
