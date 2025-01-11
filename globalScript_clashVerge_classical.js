@@ -79,12 +79,12 @@ const ruleProviders = {
     url: "https://github.com/SouthernHU/rules_clash/raw/refs/heads/main/ADBlocking.list",
     path: "./rulesets/southernhu/ADBlocking.list",
   },
-  overSeaFull_ACL4SSR: {
+  GFW_ACL4SSR: {
     ...ruleProviderCommon,
     behavior: "classical",
     format: "text",
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list",
-    path: "./rulesets/southernhu/overSeaFull_ACL4SSR.list",
+    path: "./rulesets/southernhu/GFW_ACL4SSR.list",
   },
   GFWPatch: {
     ...ruleProviderCommon,
@@ -258,9 +258,6 @@ function main(config) {
       type: "load-balance",
       strategy: "round-robin",
       "include-all": true,
-      "hidden": true,
-      icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
-    },   "include-all": true,
       "hidden": true,
       icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
     },
