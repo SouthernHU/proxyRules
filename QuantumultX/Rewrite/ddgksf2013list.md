@@ -27,7 +27,7 @@ https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/AdBlock/X
 YouTube:
 https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/AdBlock/YoutubeAds.conf
 
-跳过微信链接的中间页面:
+解锁微信屏蔽的URL:
 https://raw.githubusercontent.com/ddgksf2013/Rewrite/refs/heads/master/Function/UnblockURLinWeChat.conf
 
 Bing首页简化:
