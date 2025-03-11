@@ -1,39 +1,38 @@
-// 国内DNS服务器
-const domesticNameservers = [
-  "https://dns.alidns.com/dns-query", // 阿里云公共DNS
-  "https://doh.pub/dns-query", // 腾讯DNSPod
-  "https://doh.360.cn/dns-query", // 360安全DNS
-];
-// 国外DNS服务器
-const foreignNameservers = [
-  "https://1.1.1.1/dns-query", // Cloudflare(主)
-  "https://1.0.0.1/dns-query", // Cloudflare(备)
-  "https://208.67.222.222/dns-query", // OpenDNS(主)
-  "https://208.67.220.220/dns-query", // OpenDNS(备)
-  "https://194.242.2.2/dns-query", // Mullvad(主)
-  "https://194.242.2.3/dns-query", // Mullvad(备)
-];
-// DNS配置
+  /**
+ * 其实两组DNS就够了,一组国内,一组国外
+ * defaultDNS是用来解析DNS的,必须为IP
+ * DNS最好不要超过两个,从业界某知名APP的文档里学的
+ */
+const defaultDNS = ["tls://1.12.12.12", "tls://223.5.5.5"];
+
+const chinaDNS = ["119.29.29.29", "180.184.1.1"];
+
+const foreignDNS = ["tls://8.8.8.8", "tls://1.1.1.1", "tls://9.9.9.9"];
+
+/**
+ * DNS相关配置
+ */
 const dnsConfig = {
-  dns: true,
-  listen: 1053,
+  enable: true,
+  listen: ":53",
   ipv6: true,
+  "prefer-h3": true,
   "use-hosts": true,
-  "cache-algorithm": "arc",
+  "use-system-hosts": true,
+  "respect-rules": true,
   "enhanced-mode": "fake-ip",
   "fake-ip-range": "198.18.0.1/16",
-  "fake-ip-filter": [
-    "+.lan",
-    "+.local",
-    "+.msftconnecttest.com",
-    "+.msftncsi.com",
-  ],
-  "default-nameserver": ["223.5.5.5", "114.114.114.114", "1.1.1.1", "8.8.8.8"],
-  nameserver: [...domesticNameservers, ...foreignNameservers],
-  "proxy-server-nameserver": [...domesticNameservers, ...foreignNameservers],
+  "fake-ip-filter": ["*", "+.lan", "+.local", "+.market.xiaomi.com"],
+  "default-nameserver": [...defaultDNS],
+  nameserver: [...foreignDNS],
+  "proxy-server-nameserver": [...foreignDNS],
+  /**
+   * 这里对域名解析进行分流
+   * 由于默认dns是国外的了,只需要把国内ip和域名分流到国内dns
+   */
   "nameserver-policy": {
-    "geosite:private,cn,geolocation-cn": domesticNameservers,
-    "geosite:google,youtube,telegram,gfw,geolocation-!cn": foreignNameservers,
+    "geosite:private": "system",
+    "geosite:cn,steam@cn,category-games@cn,microsoft@cn,apple@cn": chinaDNS,
   },
 };
 // 规则集通用配置
