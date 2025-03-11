@@ -93,8 +93,13 @@ const dnsConfig = {
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/GFWPatch.list",
       path: "./rulesets/southernhu/GFWPatch.list",
     },
-  
-  
+    Game:{
+      ...ruleProviderCommon,
+      behavior: "classical",
+      format: "text",
+      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Game.list",
+      path: "./rulesets/southernhu/Game.list",
+    }  
   
   };
   // 规则
@@ -114,6 +119,7 @@ const dnsConfig = {
     "RULE-SET,GFWLite,海外常用,no-resolve",
     "RULE-SET,GFWMedia,海外流媒体,no-resolve",
     "RULE-SET,GFWPatch,海外完整,no-resolve",
+    "RULE-SET,Game,海外完整,no-resolve",
     "RULE-SET,GFW_ACL4SSR,海外完整,no-resolve",
     "RULE-SET,ADBlocking,全局拦截",
   
@@ -142,6 +148,9 @@ const dnsConfig = {
     const gptRegion = "(US|🇺🇸|美国|SG|🇸🇬|新加坡|KR|🇰🇷|韩国|AU|澳大利亚|TW|🇹🇼|台湾|日本|🇯🇵|JP|德国|🇩🇪|DE)(?!.*(0\.1x|x0\.1))";
     // 速度筛选
     const fastFillter = "x3|x2|2x|3x|1.5x|x1.5";
+    //
+    const regionFillter = "US|🇺🇸|美国";
+    
     // 覆盖原配置中DNS配置
     config["dns"] = dnsConfig;
   
@@ -199,6 +208,18 @@ const dnsConfig = {
         "filter": fastFillter, // 匹配高速节点
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
+      },
+      {
+        ...groupBaseOption,
+        // 高速节点中进行负载均衡
+        name: "游戏",
+        "type": "fallback",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 3,  // 每300秒测速一次
+        "filter": regionFillter, // 匹配高速节点
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Xbox.png",
       },
       {
         ...groupBaseOption,
