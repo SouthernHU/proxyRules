@@ -10,6 +10,10 @@ DOMAIN-KEYWORD,google
 DOMAIN-SUFFIX,deepl.com
 DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,google-analytics.com
+# VSCode
+PROCESS-NAME,Code.exe
+DOMAIN-SUFFIX,visualstudio.com
+DOMAIN-SUFFIX,vscode.com
 # Telegram
 #PROCESS-NAME,Telegram.exe
 #PROCESS-NAME,org.telegram.messenger
