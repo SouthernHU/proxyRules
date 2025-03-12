@@ -18,6 +18,9 @@
 +.xn--ngstr-lra8j.com
 +.github.io
 +.v2rayse.com
+# VSCode
++.visualstudio.com
++.vscode.com
 
 # Telegram
 PROCESS-NAME,Telegram.exe
