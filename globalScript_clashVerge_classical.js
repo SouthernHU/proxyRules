@@ -182,32 +182,29 @@ const dnsConfig = {
         // 高速节点中选择延迟最低的
         name: "海外常用",
         "type": "url-test",
-        proxies: ["负载均衡(散列)","延迟选优","负载均衡(轮询)","故障转移"],
-        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
-        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
-        "interval": 5,  // 每300秒测速一次
-        "filter": fastFillter, // 匹配高速节点
-        "include-all": true,
+        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
+        "interval": 5,  // 每5秒测速一次
+        "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
       },
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
         name: "海外流媒体",
-        type: "load-balance",
-        strategy: "consistent-hashing",
-        "include-all": true,
-        "filter": fastFillter, // 匹配高速节点
+        "type": "url-test",
+        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
+        "interval": 5,  // 每5秒测速一次
+        "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
       },
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
         name: "海外完整",
-        type: "load-balance",
-        strategy: "consistent-hashing",
-        "filter": fastFillter, // 匹配高速节点
-        "include-all": true,
+        "type": "url-test",
+        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
+        "interval": 5,  // 每5秒测速一次
+        "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
       },
       {
