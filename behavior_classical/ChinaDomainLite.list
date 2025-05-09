@@ -157,6 +157,7 @@ DOMAIN,cdn-ali.content.steamchina.com(,no-resolve)
 DOMAIN,xz.pphimalayanrt.com(,no-resolve)
 DOMAIN,lv.queniujq.cn(,no-resolve)
 DOMAIN,alibaba.cdn.steampipe.steamcontent.com(,no-resolve)
+DOMAIN-SUFFIX,steamcontent.com
 
 # Apple 中国大陆直连
 DOMAIN-SUFFIX,full:a1.mzstatic.com
