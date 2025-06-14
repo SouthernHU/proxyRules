@@ -64,3 +64,6 @@
 173.194.175.188/32
 173.194.218.188/32
 209.85.233.188/32
+# 天际线
++.modscontent.paradox-interactive.com
++.paradoxplaza.com
