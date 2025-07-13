@@ -334,5 +334,6 @@ DOMAIN-SUFFIX,full:www.apple.com.edgekey.net.globalredir.akadns.net
 DOMAIN-SUFFIX,full:www.apple.com.edgekey.net
 DOMAIN-SUFFIX,full:www.apple.com
 DOMAIN-SUFFIX,xp.apple.com
+DOMAIN-SUFFIX,full:gspe1-ssl.ls.apple.com
 
 
