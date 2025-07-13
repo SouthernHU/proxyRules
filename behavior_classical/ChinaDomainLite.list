@@ -334,6 +334,45 @@ DOMAIN-SUFFIX,full:www.apple.com.edgekey.net.globalredir.akadns.net
 DOMAIN-SUFFIX,full:www.apple.com.edgekey.net
 DOMAIN-SUFFIX,full:www.apple.com
 DOMAIN-SUFFIX,xp.apple.com
-DOMAIN-SUFFIX,full:gspe1-ssl.ls.apple.com
+# Apple Maps Fix
+# Solve AppleMap in mainland China cannot be used
+DOMAIN-SUFFIX,cdn.apple-mapkit.com
+DOMAIN-SUFFIX,configuration.ls.apple.com
+DOMAIN-SUFFIX,gs-loc.apple.com
+DOMAIN-SUFFIX,gsp-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp3-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp11-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp12-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp19-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp21-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp35-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp45-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp57-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp76-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp79-ssl.ls.apple.com
+DOMAIN-SUFFIX,gsp85-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe-ssl.ls.apple.com 
+DOMAIN-SUFFIX,gspe1-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe11-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe12-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe19-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe21-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe35-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe48-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe72-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe76-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe79-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe85-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe92-ssl.ls.apple.com
+DOMAIN-SUFFIX,gspe111-ssl.ls.apple.com
+DOMAIN-SUFFIX,i-resv.meituan.com
+DOMAIN-SUFFIX,m.hotmail.com
+DOMAIN-SUFFIX,mesu.apple.com
+DOMAIN-SUFFIX,p218-fmfmobile.icloud.com.cn
+DOMAIN-SUFFIX,p218-fmipmobile.icloud.com.cn
+DOMAIN-SUFFIX,p218-mailws.icloud.com.cn
+DOMAIN-SUFFIX,statici.icloud.com
+
+
 
 
