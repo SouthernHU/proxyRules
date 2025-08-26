@@ -51,3 +51,5 @@ PROCESS-NAME,msedgewebview2.exe
 +.colab.google.com
 +.apis.google.com
 +.gemini.google.com；
++.aistudio.google.com
+
