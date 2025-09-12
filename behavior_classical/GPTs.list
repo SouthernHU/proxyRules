@@ -42,8 +42,7 @@ DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 
 
-# NewBing
-DOMAIN-SUFFIX,bing.com/new
+# Microsoft copilot
 DOMAIN-KEYWORD,copilot
 DOMAIN-SUFFIX,copilot.microsoft.com
 
