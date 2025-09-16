@@ -4,6 +4,8 @@
 DOMAIN,xn--mes358acgm99l.com
 # 火星联盟
 DOMAIN-KEYWORD,hxlm
+# 橘色云
+DOMAIN-SUFFIX,jusecloud.com
 # Clash规则更新
 DOMAIN-SUFFIX,api.dler.io
 
