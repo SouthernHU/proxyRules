@@ -7,6 +7,8 @@ DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,chat.openai.com
 # ChatGPT第三方Windows客户端——https://github.com/lencx/ChatGPT
 PROCESS-NAME,msedgewebview2.exe
+# Google AI studio
+DOMAIN-SUFFIX,ai.google.dev
 # poe
 DOMAIN-SUFFIX,poe.com
 # 风控
