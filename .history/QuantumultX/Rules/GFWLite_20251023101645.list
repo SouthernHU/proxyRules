@@ -1,0 +1,51 @@
+# 本list存储常用的国外网站,以加快检索速度
+HOST-SUFFIX,google.com
+HOST-KEYWORD,twitter
+HOST-KEYWORD,facebook
+HOST-KEYWORD,instagram
+HOST-KEYWORD,discord
+HOST-KEYWORD,github
+HOST-KEYWORD,youtube
+HOST-KEYWORD,google
+HOST-SUFFIX,deepl.com
+HOST-SUFFIX,googleadservices.com
+HOST-SUFFIX,google-analytics.com
+HOST-SUFFIX,x.com
+# VSCode
+PROCESS-NAME,Code.exe
+HOST-SUFFIX,visualstudio.com
+HOST-SUFFIX,vscode.com
+# Telegram
+#PROCESS-NAME,Telegram.exe
+#PROCESS-NAME,org.telegram.messenger
+HOST-SUFFIX,t.me
+HOST-SUFFIX,tdesktop.com
+HOST-SUFFIX,telegra.ph
+HOST-SUFFIX,telegram.me
+HOST-SUFFIX,telegram.org
+HOST-SUFFIX,telesco.pe
+IP-CIDR,91.108.0.0/16,no-resolve
+IP-CIDR,109.239.140.0/24,no-resolve
+IP-CIDR,149.154.160.0/20,no-resolve
+IP-CIDR6,2001:67c:4e8::/48,no-resolve
+IP-CIDR6,2001:b28:f23d::/48,no-resolve
+IP-CIDR6,2001:b28:f23f::/48,no-resolve
+# Apple
+HOST-SUFFIX,tv.apple.com
+# 电子书网站
+HOST-KEYWORD,libgen
+HOST-KEYWORD,zlibrary
+# Arc浏览器
+HOST-KEYWORD,arc
+HOST-SUFFIX,arc.net
+# Steam
+HOST-SUFFIX,fanatical.com
+HOST-SUFFIX,humblebundle.com
+HOST-SUFFIX,steamcommunity.com
+HOST-SUFFIX,steampowered.com
+HOST-SUFFIX,steamstatic.com
+HOST-SUFFIX,steam-chat.com
+HOST-SUFFIX,steamusercontent.com
+HOST-SUFFIX,valvesoftware.com
+HOST-KEYWORD,steamuserimages
+HOST-KEYWORD,steamcontent
