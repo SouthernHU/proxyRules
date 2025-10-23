@@ -9,6 +9,7 @@
 PROCESS-NAME,msedgewebview2.exe
 # Google AI studio
 +.ai.google.dev
++.aistudio.google.com
 # poe
 +.poe.com
 # 风控
