@@ -16,7 +16,11 @@ DOMAIN-SUFFIX,clashverge.dev
 DOMAIN-SUFFIX,wiki.metacubex.one
 DOMAIN-SUFFIX,stash.wiki
 
-# 内容：GoogleFCM 谷歌推送服务
+# paraview
+DOMAIN-KEYWORD,paraview
+DOMAIN-SUFFIX,paraview.org
+
+# 内容:GoogleFCM 谷歌推送服务
 DOMAIN,alt1-mtalk.google.com
 DOMAIN,alt2-mtalk.google.com
 DOMAIN,alt3-mtalk.google.com
