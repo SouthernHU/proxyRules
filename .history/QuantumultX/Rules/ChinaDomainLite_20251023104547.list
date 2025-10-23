@@ -1,4 +1,4 @@
-# 快速分流
+# 快速分流,国内网站
 HOST-KEYWORD,bilibili,国内网站
 HOST-KEYWORD,taobao,国内网站
 HOST-KEYWORD,alipay,国内网站
@@ -22,8 +22,8 @@ HOST-SUFFIX,amap.com,国内网站
 HOST-SUFFIX,map.qq.com,国内网站
 HOST-KEYWORD,weibo,国内网站
 HOST-KEYWORD,sina,国内网站
-
-# Douyin
+,国内网站
+# Douyin,国内网站
 HOST,lf3-static.bytednsdoc.com,国内网站
 HOST,v5-dy-o-abtest.zjcdn.com,国内网站
 HOST-SUFFIX,amemv.com,国内网站
@@ -37,8 +37,8 @@ HOST-SUFFIX,ixiguavideo.com,国内网站
 HOST-SUFFIX,pstatp.com,国内网站
 HOST-SUFFIX,snssdk.com,国内网站
 HOST-SUFFIX,toutiao.com,国内网站
-
-# Wechat
+,国内网站
+# Wechat,国内网站
 HOST,apd-pcdnwxlogin.teg.tencent-cloud.net,国内网站
 HOST,btrace.qq.com,国内网站
 HOST,dl.wechat.com,国内网站
@@ -82,7 +82,7 @@ HOST-SUFFIX,yun-hl.3g.qq.com,国内网站
 USER-AGENT,MicroMessenger*,国内网站
 USER-AGENT,WeChat*,国内网站
 IP-ASN,132203,国内网站
-
+,国内网站
 # Apple,国内网站
 HOST,apps.apple.com,Apple,国内网站
 HOST,itunes.apple.com,Apple,国内网站
@@ -1960,8 +1960,8 @@ IP-CIDR,198.183.17.0/24,Apple,国内网站
 IP-CIDR,205.180.175.0/24,Apple,国内网站
 IP-CIDR,63.92.224.0/19,Apple,国内网站
 IP-CIDR,65.199.22.0/23,Apple,国内网站
-
-# 学术网站
+,国内网站
+# 学术网站,国内网站
 HOST-SUFFIX,sciencedirect.com,国内网站
 HOST-SUFFIX,springer.com,国内网站
 HOST-SUFFIX,asme.com,国内网站
@@ -1990,5 +1990,5 @@ HOST-KEYWORD,heinonline,国内网站
 HOST-SUFFIX,doi.org,国内网站
 ## Elsevier投稿系统,国内网站
 HOST-SUFFIX,editorialmanager.com,国内网站
-## Zotero
+## Zotero,国内网站
 HOST-KEYWORD,zotero,国内网站
