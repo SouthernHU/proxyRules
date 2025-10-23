@@ -7,6 +7,8 @@
 +.perplexity
 # ChatGPT第三方Windows客户端https://github.com/lencx/ChatGPT
 PROCESS-NAME,msedgewebview2.exe
+# Google AI studio
++.ai.google.dev
 # poe
 +.poe.com
 # 风控
@@ -52,4 +54,5 @@ PROCESS-NAME,msedgewebview2.exe
 +.apis.google.com
 +.gemini.google.com；
 +.aistudio.google.com
+
 
