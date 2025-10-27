@@ -49,3 +49,5 @@ DOMAIN-SUFFIX,steamusercontent.com
 DOMAIN-SUFFIX,valvesoftware.com
 DOMAIN-KEYWORD,steamuserimages
 DOMAIN-KEYWORD,steamcontent
+# Grammarly
+DOMAIN-SUFFIX,grammarly.com
