@@ -21,6 +21,7 @@
 # VSCode
 +.visualstudio.com
 +.vscode.com
++.org
 
 # Telegram
 PROCESS-NAME,Telegram.exe

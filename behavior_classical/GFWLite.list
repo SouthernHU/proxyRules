@@ -11,6 +11,7 @@ DOMAIN-SUFFIX,deepl.com
 DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,google-analytics.com
 DOMAIN-SUFFIX,x.com
+DOMAIN-SUFFIX,*.org
 # VSCode
 PROCESS-NAME,Code.exe
 DOMAIN-SUFFIX,visualstudio.com
