@@ -167,13 +167,14 @@ const dnsConfig = {
         // 美国|新加坡|韩国|澳大利亚|台湾|日本|德国
         "filter": gptRegion,
         "include-all": true,
+        proxies: ["美国节点","日本节点","新加坡节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
       {
         ...groupBaseOption,
         name: "国内常用",
         type: "select",
-        proxies: ["DIRECT"],
+        proxies: ["DIRECT","负载均衡(散列)"],
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
       },
@@ -182,7 +183,7 @@ const dnsConfig = {
         // 高速节点中选择延迟最低的
         name: "海外常用",
         "type": "url-test",
-        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
+        proxies: ["美国节点","日本节点","新加坡节点","负载均衡(散列)","负载均衡(轮询)","故障转移"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
@@ -270,6 +271,45 @@ const dnsConfig = {
         "include-all": true,
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
+        name: "美国节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        // 美国
+        "filter": "US|🇺🇸|美国",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
+        name: "日本节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        // 美国
+        "filter": "JP|🇯🇵|日本",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
+        name: "新加坡节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        // 美国
+        "filter": "SG|🇸🇬|新加坡",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
       },
     ];
   
