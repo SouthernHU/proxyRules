@@ -20,6 +20,10 @@ DOMAIN-SUFFIX,stash.wiki
 DOMAIN-KEYWORD,paraview
 DOMAIN-SUFFIX,paraview.org
 
+# CadQuery 
+DOMAIN-KEYWORD,cadquery
+DOMAIN,adquery.readthedocs.io
+
 # 内容:GoogleFCM 谷歌推送服务
 DOMAIN,alt1-mtalk.google.com
 DOMAIN,alt2-mtalk.google.com
