@@ -12,6 +12,9 @@ DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,google-analytics.com
 DOMAIN-SUFFIX,x.com
 DOMAIN-SUFFIX,*.org
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,files.pythonhosted.org
+DOMAIN-KEYWORD,pypi
 # VSCode
 PROCESS-NAME,Code.exe
 DOMAIN-SUFFIX,visualstudio.com
