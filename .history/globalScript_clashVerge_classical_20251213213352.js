@@ -179,33 +179,48 @@ const dnsConfig = {
       },
       {
         ...groupBaseOption,
-        // 海外常用域名
+        // 海外常用域名进行负载均衡(默认)
+        // 按照给定顺序选择节点,当第一个节点组不可用时,选择下一个节点组
         name: "海外常用",
-        "type": "select",
-        proxies: ["节点选择","负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "type": "fallback",
+        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
       },
       {
         ...groupBaseOption,
-        // 海外流媒体域名
+        // 海外流媒体域名进行负载均衡(默认)
+        // 按照给定顺序选择节点,当第一个节点组不可用时,选择下一个节点组
         name: "海外流媒体",
-        "type": "select",
-        proxies: ["节点选择","负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "type": "fallback",
+        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
       },
       {
         ...groupBaseOption,
-        // 海外域名(完整)
+        // 高速节点中进行负载均衡
         name: "海外完整",
-        "type": "select",
-        proxies: ["节点选择","负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "type": "url-test",
+        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
+      },
+      {
+        ...groupBaseOption,
+        // 高速节点中进行负载均衡
+        name: "游戏",
+        "type": "load-balance",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 3,  // 每300秒测速一次
+        "filter": regionFillter, // 匹配高速节点
+        "strategy": "sticky-sessions",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Xbox.png",
       },
       {
         ...groupBaseOption,
@@ -237,7 +252,6 @@ const dnsConfig = {
         ...groupBaseOption,
         name: "故障转移",
         type: "fallback",
-        interval: 3,
         "include-all": true,
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg",
@@ -262,7 +276,7 @@ const dnsConfig = {
       },
       {
         ...groupBaseOption,
-        // 美国节点中选择延迟最低的
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
         name: "美国节点",
         "type": "url-test",
         "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
@@ -275,7 +289,7 @@ const dnsConfig = {
       },
       {
         ...groupBaseOption,
-        // 日本节点中选择延迟最低的
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
         name: "日本节点",
         "type": "url-test",
         "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
@@ -288,8 +302,21 @@ const dnsConfig = {
       },
       {
         ...groupBaseOption,
-        // 新加坡节点中选择延迟最低的
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
         name: "新加坡节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        // 美国
+        "filter": "SG|🇸🇬|新加坡",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 支筛选极速机场
+        name: "极速机场",
         "type": "url-test",
         "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
         "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
@@ -297,11 +324,13 @@ const dnsConfig = {
         "filter": "SG|🇸🇬|新加坡",
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
-      }
+      },
     ];
+  
     // 覆盖原配置中的规则
     config["rule-providers"] = ruleProviders;
     config["rules"] = rules;
+  
     // 返回修改后的配置
     return config;
   }

@@ -209,6 +209,19 @@ const dnsConfig = {
       },
       {
         ...groupBaseOption,
+        // 高速节点中进行负载均衡
+        name: "游戏",
+        "type": "load-balance",
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 3,  // 每300秒测速一次
+        "filter": regionFillter, // 匹配高速节点
+        "strategy": "sticky-sessions",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Xbox.png",
+      },
+      {
+        ...groupBaseOption,
         name: "全局拦截",
         type: "select",
         proxies: ["REJECT", "DIRECT"],
@@ -299,9 +312,11 @@ const dnsConfig = {
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
       }
     ];
+  
     // 覆盖原配置中的规则
     config["rule-providers"] = ruleProviders;
     config["rules"] = rules;
+  
     // 返回修改后的配置
     return config;
   }
