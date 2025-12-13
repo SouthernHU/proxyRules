@@ -161,10 +161,10 @@ const dnsConfig = {
         ...groupBaseOption,
         // 支持的国家中选择延迟最低的,并排除低倍速率节点
         name: "Ai",
-        "type": "select",
+        "type": "url-test",
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
-        "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
-        "interval": 3,  // 每3秒测速一次
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 3,  // 每5秒测速一次
         "include-all": false,
         proxies: ["美国节点","日本节点","新加坡节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
