@@ -1,4 +1,4 @@
-  /**
+/**
  * 其实两组DNS就够了,一组国内,一组国外
  * defaultDNS是用来解析DNS的,必须为IP
  * DNS最好不要超过两个,从业界某知名APP的文档里学的
@@ -62,8 +62,8 @@ const dnsConfig = {
       ...ruleProviderCommon,
       behavior: "classical",
       format: "text",
-      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Ai.list",
-      path: "./rulesets/southernhu/Ai.list",
+      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/GPTs.list",
+      path: "./rulesets/southernhu/GPTs.list",
     },
     GFWMedia: {
       ...ruleProviderCommon,
@@ -167,7 +167,7 @@ const dnsConfig = {
         // 美国|新加坡|韩国|澳大利亚|台湾|日本|德国
         "filter": gptRegion,
         "include-all": true,
-        proxies: ["美国节点","日本节点","新加坡节点"],
+        proxies: ["机场A节点1", "机场A节点2", "机场A节点3"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
       {
@@ -307,18 +307,6 @@ const dnsConfig = {
         "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
         "interval": 5,  // 每5秒测速一次
         // 美国
-        "filter": "SG|🇸🇬|新加坡",
-        "include-all": true,
-        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
-      },
-      {
-        ...groupBaseOption,
-        // 支筛选极速机场
-        name: "极速机场",
-        "type": "url-test",
-        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
-        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
-        "interval": 5,  // 每5秒测速一次
         "filter": "SG|🇸🇬|新加坡",
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
