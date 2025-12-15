@@ -102,13 +102,7 @@ const dnsConfig = {
       format: "text",
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Game.list",
       path: "./rulesets/southernhu/Game.list",
-    },
-    Apple: {
-      ...ruleProviderCommon,
-      behavior: "classical",
-      format: "text",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list",  
-    }
+    }  
   
   };
   // 规则列表
@@ -124,7 +118,6 @@ const dnsConfig = {
     "GEOIP,CN,DIRECT,no-resolve",
     //自定义规则
     "RULE-SET,ChinaDomainLite,国内常用,no-resolve",
-    "RULE-SET,Apple,国内常用,no-resolve",
     "RULE-SET,Ai,Ai,no-resolve",
     "RULE-SET,GFWLite,海外常用,no-resolve",
     "RULE-SET,GFWMedia,海外流媒体,no-resolve",

@@ -124,7 +124,6 @@ const dnsConfig = {
     "GEOIP,CN,DIRECT,no-resolve",
     //自定义规则
     "RULE-SET,ChinaDomainLite,国内常用,no-resolve",
-    "RULE-SET,Apple,国内常用,no-resolve",
     "RULE-SET,Ai,Ai,no-resolve",
     "RULE-SET,GFWLite,海外常用,no-resolve",
     "RULE-SET,GFWMedia,海外流媒体,no-resolve",
