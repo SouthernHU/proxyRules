@@ -207,7 +207,7 @@ const dnsConfig = {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
         name: "海外完整",
-        "type": "fallback",
+        "type": "url-test",
         proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,

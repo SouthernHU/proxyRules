@@ -161,7 +161,7 @@ const dnsConfig = {
       // 代理组: Ai
       {
         ...groupBaseOption,
-        // 按照列表中的节点顺序依次使用
+        // 手动选择支持的国家的节点
         name: "Ai",
         "type": "fallback",
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
@@ -176,17 +176,17 @@ const dnsConfig = {
         ...groupBaseOption,
         name: "国内常用",
         type: "select",
-        proxies: ["DIRECT","负载均衡(哈希)"],
+        proxies: ["DIRECT"],
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
       },
       // 代理组: 海外常用
       {
         ...groupBaseOption,
-        // 高速节点中选择延迟最低的
+        // 海外常用域名
         name: "海外常用",
-        "type": "fallback",
-        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "type": "select",
+        proxies: ["节点选择","负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
@@ -194,10 +194,10 @@ const dnsConfig = {
       // 代理组: 海外流媒体
       {
         ...groupBaseOption,
-        // 高速节点中进行负载均衡
+        // 海外流媒体域名
         name: "海外流媒体",
-        "type": "fallback",
-        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "type": "select",
+        proxies: ["节点选择","负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
@@ -205,10 +205,10 @@ const dnsConfig = {
       // 代理组: 海外完整
       {
         ...groupBaseOption,
-        // 高速节点中进行负载均衡
+        // 海外域名(完整)
         name: "海外完整",
-        "type": "fallback",
-        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "type": "select",
+        proxies: ["节点选择","负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
@@ -216,6 +216,8 @@ const dnsConfig = {
       // 代理组: 游戏
       {
         ...groupBaseOption,
+<<<<<<< HEAD
+=======
         // 高速节点中进行负载均衡
         name: "游戏",
         "type": "load-balance",
@@ -230,6 +232,7 @@ const dnsConfig = {
       // 代理组: 全局拦截
       {
         ...groupBaseOption,
+>>>>>>> 0011a31 (refactor(clash): 优化代理组配置和代码注释)
         name: "全局拦截",
         type: "select",
         proxies: ["REJECT", "DIRECT"],
@@ -261,6 +264,7 @@ const dnsConfig = {
         ...groupBaseOption,
         name: "故障转移",
         type: "fallback",
+        interval: 3,
         "include-all": true,
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg",
@@ -314,7 +318,11 @@ const dnsConfig = {
         // 新加坡节点中选择延迟最低的
         name: "新加坡节点",
         "type": "url-test",
+<<<<<<< HEAD
+        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
+=======
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+>>>>>>> 0011a31 (refactor(clash): 优化代理组配置和代码注释)
         "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
         "interval": 5,  // 每5秒测速一次
         "filter": "SG|🇸🇬|新加坡",
@@ -322,11 +330,9 @@ const dnsConfig = {
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
       }
     ];
-  
     // 覆盖原配置中的规则
     config["rule-providers"] = ruleProviders;
     config["rules"] = rules;
-  
     // 返回修改后的配置
     return config;
   }
