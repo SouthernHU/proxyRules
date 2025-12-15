@@ -161,9 +161,9 @@ const dnsConfig = {
       // 代理组: Ai
       {
         ...groupBaseOption,
-        // 按照列表中的节点顺序依次使用
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
         name: "Ai",
-        "type": "fallback",
+        "type": "select",
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
         "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
         "interval": 3,  // 每3秒测速一次

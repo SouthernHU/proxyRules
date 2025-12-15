@@ -161,7 +161,7 @@ const dnsConfig = {
       // 代理组: Ai
       {
         ...groupBaseOption,
-        // 按照列表中的节点顺序依次使用
+        // 
         name: "Ai",
         "type": "fallback",
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰

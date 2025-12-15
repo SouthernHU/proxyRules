@@ -158,12 +158,11 @@ const dnsConfig = {
   
     // 覆盖原配置中的代理组
     config["proxy-groups"] = [
-      // 代理组: Ai
       {
         ...groupBaseOption,
-        // 按照列表中的节点顺序依次使用
+        // 支持的国家中选择延迟最低的,并排除低倍速率节点
         name: "Ai",
-        "type": "fallback",
+        "type": "select",
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
         "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
         "interval": 3,  // 每3秒测速一次
@@ -171,7 +170,6 @@ const dnsConfig = {
         proxies: ["美国节点","日本节点","新加坡节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
-      // 代理组: 国内常用
       {
         ...groupBaseOption,
         name: "国内常用",
@@ -180,7 +178,6 @@ const dnsConfig = {
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
       },
-      // 代理组: 海外常用
       {
         ...groupBaseOption,
         // 高速节点中选择延迟最低的
@@ -191,7 +188,6 @@ const dnsConfig = {
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
       },
-      // 代理组: 海外流媒体
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
@@ -202,7 +198,6 @@ const dnsConfig = {
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
       },
-      // 代理组: 海外完整
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
@@ -213,7 +208,6 @@ const dnsConfig = {
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
       },
-      // 代理组: 游戏
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
@@ -227,7 +221,6 @@ const dnsConfig = {
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Xbox.png",
       },
-      // 代理组: 全局拦截
       {
         ...groupBaseOption,
         name: "全局拦截",
@@ -235,7 +228,6 @@ const dnsConfig = {
         proxies: ["REJECT", "DIRECT"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg",
       },
-      // 代理组: 节点选择
       {
         ...groupBaseOption,
         name: "节点选择",
@@ -246,7 +238,6 @@ const dnsConfig = {
         interval: 5,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
       },
-      // 代理组: 延迟选优
       {
         ...groupBaseOption,
         name: "延迟选优",
@@ -256,7 +247,6 @@ const dnsConfig = {
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg",
       },
-      // 代理组: 故障转移
       {
         ...groupBaseOption,
         name: "故障转移",
@@ -265,7 +255,6 @@ const dnsConfig = {
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg",
       },
-      // 代理组: 负载均衡(哈希)
       {
         ...groupBaseOption,
         name: "负载均衡(哈希)",
@@ -275,7 +264,6 @@ const dnsConfig = {
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg",
       },
-      // 代理组: 负载均衡(轮询)
       {
         ...groupBaseOption,
         name: "负载均衡(轮询)",

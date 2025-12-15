@@ -161,13 +161,14 @@ const dnsConfig = {
       // 代理组: Ai
       {
         ...groupBaseOption,
-        // 按照列表中的节点顺序依次使用
+        // 
         name: "Ai",
         "type": "fallback",
         "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
         "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
         "interval": 3,  // 每3秒测速一次
         "include-all": false,
+        "strategy": "latency",
         proxies: ["美国节点","日本节点","新加坡节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },

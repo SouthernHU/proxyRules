@@ -1,0 +1,35 @@
+# 西交
+DOMAIN-KEYWORD,xjtu
+DOMAIN-SUFFIX,idp.xjtu.edu.cn
+DOMAIN-SUFFIX,edu.cn
+# 学术网站
+DOMAIN-SUFFIX,sciencedirect.com
+DOMAIN-SUFFIX,springer.com
+DOMAIN-SUFFIX,asme.com
+DOMAIN-SUFFIX,ieee.com
+DOMAIN-SUFFIX,kns.cnki.net
+DOMAIN-SUFFIX,cnki.net
+DOMAIN-KEYWORD,cnki
+DOMAIN-SUFFIX,nature.com
+DOMAIN-SUFFIX,elsevier.com
+DOMAIN-KEYWORD,sage
+DOMAIN-SUFFIX,mdpi.com
+DOMAIN-KEYWORD,webofscience
+DOMAIN-KEYWORD,webofknowledge
+DOMAIN-KEYWORD,clarivate
+DOMAIN-SUFFIX,webofscience.com
+DOMAIN-SUFFIX,webofknowledge.com
+DOMAIN-SUFFIX,clarivate.com
+DOMAIN-SUFFIX,sagepub.com
+DOMAIN-KEYWORD,sagepub
+DOMAIN-SUFFIX,acm.org
+DOMAIN-SUFFIX,cnki.net
+DOMAIN-SUFFIX,asme.org
+DOMAIN-KEYWORD,elsevier
+DOMAIN-SUFFIX,scientific.net
+DOMAIN-KEYWORD,heinonline
+DOMAIN-SUFFIX,doi.org
+# Zotero
+DOMAIN-KEYWORD,zotero
+# Elsevier投稿系统
+DOMAIN-SUFFIX,editorialmanager.com
