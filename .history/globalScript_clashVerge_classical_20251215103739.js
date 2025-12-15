@@ -168,7 +168,7 @@ const dnsConfig = {
         "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
         "interval": 3,  // 每3秒测速一次
         "include-all": false,
-        proxies: ["美国节点","日本节点"],
+        proxies: ["美国节点","日本节点","新加坡节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
       // 代理组: 国内常用
