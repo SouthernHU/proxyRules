@@ -62,6 +62,7 @@ DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com
 DOMAIN-SUFFIX,googleapis.com
 DOMAIN-SUFFIX,google.com
 DOMAIN-KEYWORD,cloudcode
+DOMAIN-SUFFIX,open-vsx.org
 
 ## > JetBrains AI
 DOMAIN-SUFFIX,grazie.ai
