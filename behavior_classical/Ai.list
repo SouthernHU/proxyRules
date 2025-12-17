@@ -52,6 +52,17 @@ DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,googleapis.com
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 
+## > Google IDX (Antigravity)
+DOMAIN-SUFFIX,com.google.antigravity
+DOMAIN-SUFFIX,com.google.antigravity.helper
+DOMAIN-PROCESS,Antigravity.app
+DOMAIN-KEYWORD,Antigravity
+DOMAIN,play.googleapis.com
+DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,google.com
+DOMAIN-KEYWORD,cloudcode
+
 ## > JetBrains AI
 DOMAIN-SUFFIX,grazie.ai
 
