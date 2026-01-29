@@ -34,6 +34,7 @@ DOMAIN-KEYWORD, githubcopilot
 DOMAIN, api.github.com
 DOMAIN, api.mcp.github.com
 DOMAIN, alive.github.com
+DOMAIN, education.github.com
 
 ## > Cursor
 DOMAIN-SUFFIX,cursor.sh
