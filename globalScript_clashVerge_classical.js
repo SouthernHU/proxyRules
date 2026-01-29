@@ -129,7 +129,7 @@ const dnsConfig = {
     "RULE-SET,GFWLite,海外常用,no-resolve",
     "RULE-SET,GFWMedia,海外流媒体,no-resolve",
     "RULE-SET,GFWPatch,海外完整,no-resolve",
-    "RULE-SET,Game,海外完整,no-resolve",
+    "RULE-SET,Game,游戏,no-resolve",
     "RULE-SET,GFW_ACL4SSR,海外完整,no-resolve",
     "RULE-SET,ADBlocking,全局拦截",
   
