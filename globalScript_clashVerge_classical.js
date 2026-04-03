@@ -43,12 +43,15 @@ const dnsConfig = {
     interval: 1800, //半小时更新一次规则
   };
   // 规则集配置
+  // 定义多个规则集
   const ruleProviders = {
     ChinaDomainLite: {
       ...ruleProviderCommon,
       behavior: "classical",
       format: "text",
+      // 规则下载地址
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/ChinaDomainLite.list",
+      // 本地缓存路径
       path: "./rulesets/southernhu/ChinaDomainLite.list",
     },
     GFWLite: {
@@ -58,12 +61,12 @@ const dnsConfig = {
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/GFWLite.list",
       path: "./rulesets/southernhu/GFWLite.list",
     },
-    GPTs: {
+    Ai: {
       ...ruleProviderCommon,
       behavior: "classical",
       format: "text",
-      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/GPTs.list",
-      path: "./rulesets/southernhu/GPTs.list",
+      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Ai.list",
+      path: "./rulesets/southernhu/Ai.list",
     },
     GFWMedia: {
       ...ruleProviderCommon,
@@ -99,10 +102,16 @@ const dnsConfig = {
       format: "text",
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Game.list",
       path: "./rulesets/southernhu/Game.list",
-    }  
+    },
+    Apple: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      format: "text",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list",  
+    }
   
   };
-  // 规则
+  // 规则列表
   const rules = [
     // 自定义规则
     "DOMAIN-SUFFIX,googleapis.cn,节点选择", // Google服务
@@ -115,11 +124,12 @@ const dnsConfig = {
     "GEOIP,CN,DIRECT,no-resolve",
     //自定义规则
     "RULE-SET,ChinaDomainLite,国内常用,no-resolve",
-    "RULE-SET,GPTs,GPTs,no-resolve",
+    "RULE-SET,Apple,国内常用,no-resolve",
+    "RULE-SET,Ai,Ai,no-resolve",
     "RULE-SET,GFWLite,海外常用,no-resolve",
     "RULE-SET,GFWMedia,海外流媒体,no-resolve",
     "RULE-SET,GFWPatch,海外完整,no-resolve",
-    "RULE-SET,Game,海外完整,no-resolve",
+    "RULE-SET,Game,游戏,no-resolve",
     "RULE-SET,GFW_ACL4SSR,海外完整,no-resolve",
     "RULE-SET,ADBlocking,全局拦截",
   
@@ -136,6 +146,7 @@ const dnsConfig = {
   
   // 程序入口
   function main(config) {
+    
     const proxyCount = config?.proxies?.length ?? 0;
     const proxyProviderCount =
       typeof config?.["proxy-providers"] === "object"
@@ -148,77 +159,82 @@ const dnsConfig = {
     const gptRegion = "(US|🇺🇸|美国|SG|🇸🇬|新加坡|KR|🇰🇷|韩国|AU|澳大利亚|TW|🇹🇼|台湾|日本|🇯🇵|JP|德国|🇩🇪|DE)(?!.*(0\.1x|x0\.1))";
     // 速度筛选
     const fastFillter = "x3|x2|2x|3x|1.5x|x1.5";
-    //
-    const regionFillter = "US|🇺🇸|美国";
     
     // 覆盖原配置中DNS配置
     config["dns"] = dnsConfig;
   
     // 覆盖原配置中的代理组
     config["proxy-groups"] = [
+      // 代理组: Ai
       {
         ...groupBaseOption,
-        // 支持的国家中选择延迟最低的,并排除低倍速率节点
-        name: "GPTs",
-        "type": "url-test",
-        "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
-        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
-        "interval": 5,  // 每5秒测速一次
-        // 美国|新加坡|韩国|澳大利亚|台湾|日本|德国
-        "filter": gptRegion,
-        "include-all": true,
+        // 按照列表中的节点顺序依次使用
+        name: "Ai",
+        "type": "select",
+        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
+        "interval": 3,  // 每3秒测速一次
+        "include-all": false,
+        proxies: ["美国节点","日本节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
+      // 代理组: 国内常用
       {
         ...groupBaseOption,
         name: "国内常用",
         type: "select",
-        proxies: ["DIRECT"],
+        proxies: ["DIRECT","负载均衡(哈希)"],
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
       },
+      // 代理组: 海外常用
       {
         ...groupBaseOption,
         // 高速节点中选择延迟最低的
         name: "海外常用",
-        "type": "url-test",
-        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
+        "type": "fallback",
+        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/google.svg",
       },
+      // 代理组: 海外流媒体
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
         name: "海外流媒体",
-        "type": "url-test",
-        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
+        "type": "fallback",
+        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
         "interval": 5,  // 每5秒测速一次
         "include-all": false,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/youtube.svg",
       },
-      {
-        ...groupBaseOption,
-        // 高速节点中进行负载均衡
-        name: "海外完整",
-        "type": "url-test",
-        proxies: ["负载均衡(散列)","负载均衡(轮询)","故障转移"],
-        "interval": 5,  // 每5秒测速一次
-        "include-all": false,
-        icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
-      },
+      // 代理组: 游戏
       {
         ...groupBaseOption,
         // 高速节点中进行负载均衡
         name: "游戏",
-        "type": "fallback",
+        "type": "url-test",
         "tolerance": 100,  // 延迟容忍度,超过150ms的节点将被淘汰
         "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
-        "interval": 3,  // 每300秒测速一次
-        "filter": regionFillter, // 匹配高速节点
+        "interval": 3,  // 每3秒测速一次
+        "filter": "日本|🇯🇵|JP", // 匹配高速节点
+        "strategy": "sticky-sessions",
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Xbox.png",
       },
+      // 代理组: 海外完整
+      {
+        ...groupBaseOption,
+        // 高速节点中进行负载均衡
+        name: "海外完整",
+        "type": "fallback",
+        proxies: ["负载均衡(轮询)","负载均衡(哈希)","故障转移","美国节点","日本节点","新加坡节点"],
+        "interval": 5,  // 每5秒测速一次
+        "include-all": false,
+        icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/World_Map.png",
+      },
+      // 代理组: 全局拦截
       {
         ...groupBaseOption,
         name: "全局拦截",
@@ -226,16 +242,18 @@ const dnsConfig = {
         proxies: ["REJECT", "DIRECT"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg",
       },
+      // 代理组: 节点选择
       {
         ...groupBaseOption,
         name: "节点选择",
         "type": "url-test",
-        proxies: ["负载均衡(散列)","延迟选优","负载均衡(轮询)","故障转移"],
+        proxies: ["负载均衡(哈希)","延迟选优","负载均衡(轮询)","故障转移"],
         "include-all": true,
         url: "http://www.gstatic.com/generate_204",
         interval: 5,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg",
       },
+      // 代理组: 延迟选优
       {
         ...groupBaseOption,
         name: "延迟选优",
@@ -245,6 +263,7 @@ const dnsConfig = {
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/speed.svg",
       },
+      // 代理组: 故障转移
       {
         ...groupBaseOption,
         name: "故障转移",
@@ -253,15 +272,17 @@ const dnsConfig = {
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/ambulance.svg",
       },
+      // 代理组: 负载均衡(哈希)
       {
         ...groupBaseOption,
-        name: "负载均衡(散列)",
+        name: "负载均衡(哈希)",
         type: "load-balance",
         strategy: "consistent-hashing",
         "include-all": true,
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/merry_go.svg",
       },
+      // 代理组: 负载均衡(轮询)
       {
         ...groupBaseOption,
         name: "负载均衡(轮询)",
@@ -271,6 +292,42 @@ const dnsConfig = {
         "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/balance.svg",
       },
+      {
+        ...groupBaseOption,
+        // 美国节点中选择延迟最低的
+        name: "美国节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        "filter": "US|🇺🇸|美国",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 日本节点中选择延迟最低的
+        name: "日本节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        "filter": "JP|🇯🇵|日本",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 新加坡节点中选择延迟最低的
+        name: "新加坡节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        "filter": "SG|🇸🇬|新加坡",
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
+      }
     ];
   
     // 覆盖原配置中的规则

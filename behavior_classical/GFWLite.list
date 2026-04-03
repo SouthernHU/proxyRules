@@ -1,4 +1,4 @@
-# 本list存储常用的国外网站，以加快检索速度
+# 本list存储常用的国外网站,以加快检索速度
 DOMAIN-SUFFIX,google.com
 DOMAIN-KEYWORD,twitter
 DOMAIN-KEYWORD,facebook
@@ -11,6 +11,10 @@ DOMAIN-SUFFIX,deepl.com
 DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,google-analytics.com
 DOMAIN-SUFFIX,x.com
+DOMAIN-SUFFIX,*.org
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,files.pythonhosted.org
+DOMAIN-KEYWORD,pypi
 # VSCode
 PROCESS-NAME,Code.exe
 DOMAIN-SUFFIX,visualstudio.com
@@ -49,3 +53,5 @@ DOMAIN-SUFFIX,steamusercontent.com
 DOMAIN-SUFFIX,valvesoftware.com
 DOMAIN-KEYWORD,steamuserimages
 DOMAIN-KEYWORD,steamcontent
+# Grammarly
+DOMAIN-SUFFIX,grammarly.com
