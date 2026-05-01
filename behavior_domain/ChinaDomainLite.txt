@@ -1,6 +1,11 @@
 # 国内常用
 +.cn
 
+# Ai中转站
++.packyapi.com
++.ikuncode.cc
++.api.ikuncode.cc
+
 # 流媒体
 +.bilibili.com
 +.douyin.com

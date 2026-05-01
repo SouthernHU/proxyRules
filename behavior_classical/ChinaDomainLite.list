@@ -1,5 +1,12 @@
 # 国内其他常用
 GEOIP,CN
+
+# Ai中转站
+DOMAIN-SUFFIX,packyapi.com
+DOMAIN-SUFFIX,ikuncode.cc
+DOMAIN-SUFFIX,api.ikuncode.cc
+DOMAIN-KEYWORD,packyapi
+
 # 互联网
 DOMAIN-KEYWORD,bilibili
 DOMAIN-KEYWORD,taobao
