@@ -1,0 +1,6 @@
+prepend-proxies:
+  - name: "SchoolComputers"
+    type: http          
+    server: 172.XX.XX.XX      # 填写虚拟局域网的IP
+    port: 7897                # 填写远程主机clash verge的端口
+    udp: false

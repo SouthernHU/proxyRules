@@ -10,10 +10,6 @@ const chinaDNS = ["119.29.29.29", "180.184.1.1"];
 const foreignDNS = ["tls://8.8.8.8", "tls://1.1.1.1", "tls://9.9.9.9"];
 
 
-// ========== 学校电脑配置(按实际情况修改) ==========
-const SCHOOL_CLASH_IP = "10.168.x.x";  // ← 学校电脑的蒲公英虚拟IP
-const SCHOOL_CLASH_PORT = 7897;        // ← 学校电脑 Clash 混合端口
-
 /**
  * DNS相关配置
  */
@@ -135,10 +131,11 @@ const dnsConfig = {
     "DOMAIN,v2rayse.com,节点选择", // V2rayse节点工具
     // 其他规则
     "GEOIP,LAN,DIRECT,no-resolve",
-    "GEOIP,CN,DIRECT,no-resolve",
+    // "GEOIP,CN,DIRECT,no-resolve",
     //自定义规则
     "RULE-SET,ChinaDomainLite,国内常用,no-resolve",
     "RULE-SET,Apple,国内常用,no-resolve",
+    "RULE-SET,Academic,学术网站,no-resolve",
     "RULE-SET,Ai,Ai,no-resolve",
     "RULE-SET,GFWLite,海外常用,no-resolve",
     "RULE-SET,GFWMedia,海外流媒体,no-resolve",
@@ -160,7 +157,12 @@ const dnsConfig = {
   
   // 程序入口
   function main(config) {
-    
+    // 1. 让脚本去读取并激活 Merge.yaml 里被塞进来的 prepend-proxies 节点
+    if (config["prepend-proxies"] && Array.isArray(config["prepend-proxies"])) {
+      if (!config.proxies) config.proxies = [];
+      // 把自定义节点拼接到总节点列表的最前面
+      config.proxies = [...config["prepend-proxies"], ...config.proxies];
+    }
     const proxyCount = config?.proxies?.length ?? 0;
     const proxyProviderCount =
       typeof config?.["proxy-providers"] === "object"
@@ -173,7 +175,7 @@ const dnsConfig = {
     const gptRegion = "(US|🇺🇸|美国|SG|🇸🇬|新加坡|KR|🇰🇷|韩国|AU|澳大利亚|TW|🇹🇼|台湾|日本|🇯🇵|JP|德国|🇩🇪|DE)(?!.*(0\.1x|x0\.1))";
     // 速度筛选
     const fastFillter = "x3|x2|2x|3x|1.5x|x1.5";
-    
+
     // 覆盖原配置中DNS配置
     config["dns"] = dnsConfig;
   
@@ -197,9 +199,9 @@ const dnsConfig = {
         ...groupBaseOption,
         name: "学术网站",
         type: "select",
-        proxies: ["School Computers","DIRECT","负载均衡(哈希)"],
+        proxies: ["SchoolComputers","DIRECT","负载均衡(哈希)"],
         "include-all": false,
-        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
+        icon: "https://fastly.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/categorybook.png",
       },
       // 代理组: 国内常用
       {
