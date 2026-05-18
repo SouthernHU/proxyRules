@@ -9,6 +9,11 @@ const chinaDNS = ["119.29.29.29", "180.184.1.1"];
 
 const foreignDNS = ["tls://8.8.8.8", "tls://1.1.1.1", "tls://9.9.9.9"];
 
+
+// ========== 学校电脑配置(按实际情况修改) ==========
+const SCHOOL_CLASH_IP = "10.168.x.x";  // ← 学校电脑的蒲公英虚拟IP
+const SCHOOL_CLASH_PORT = 7897;        // ← 学校电脑 Clash 混合端口
+
 /**
  * DNS相关配置
  */
@@ -45,6 +50,15 @@ const dnsConfig = {
   // 规则集配置
   // 定义多个规则集
   const ruleProviders = {
+    Academic: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      format: "text",
+      // 规则下载地址
+      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Academic.list",
+      // 本地缓存路径
+      path: "./rulesets/southernhu/ChinaDomainLite.list",
+    },
     ChinaDomainLite: {
       ...ruleProviderCommon,
       behavior: "classical",
@@ -177,6 +191,15 @@ const dnsConfig = {
         "include-all": false,
         proxies: ["美国节点","日本节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
+      },
+       // 代理组: 学术网站
+      {
+        ...groupBaseOption,
+        name: "学术网站",
+        type: "select",
+        proxies: ["School Computers","DIRECT","负载均衡(哈希)"],
+        "include-all": false,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/cn.svg",
       },
       // 代理组: 国内常用
       {

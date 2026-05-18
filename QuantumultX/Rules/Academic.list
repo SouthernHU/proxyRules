@@ -1,0 +1,31 @@
+# 学术网站
+HOST-SUFFIX,sciencedirect.com,国内网站
+HOST-SUFFIX,springer.com,国内网站
+HOST-SUFFIX,asme.com,国内网站
+HOST-SUFFIX,ieee.com,国内网站
+HOST-SUFFIX,kns.cnki.net,国内网站
+HOST-SUFFIX,cnki.net,国内网站
+HOST-KEYWORD,cnki,国内网站
+HOST-SUFFIX,nature.com,国内网站
+HOST-SUFFIX,elsevier.com,国内网站
+HOST-KEYWORD,sage,国内网站
+HOST-SUFFIX,mdpi.com,国内网站
+HOST-KEYWORD,webofscience,国内网站
+HOST-KEYWORD,webofknowledge,国内网站
+HOST-KEYWORD,clarivate,国内网站
+HOST-SUFFIX,webofscience.com,国内网站
+HOST-SUFFIX,webofknowledge.com,国内网站
+HOST-SUFFIX,clarivate.com,国内网站
+HOST-SUFFIX,sagepub.com,国内网站
+HOST-KEYWORD,sagepub,国内网站
+HOST-SUFFIX,acm.org,国内网站
+HOST-SUFFIX,cnki.net,国内网站
+HOST-SUFFIX,asme.org,国内网站
+HOST-KEYWORD,elsevier,国内网站
+HOST-SUFFIX,scientific.net,国内网站
+HOST-KEYWORD,heinonline,国内网站
+HOST-SUFFIX,doi.org,国内网站
+# Zotero
+HOST-KEYWORD,zotero,国内网站
+# Elsevier投稿系统
+HOST-SUFFIX,editorialmanager.com,国内网站
