@@ -57,7 +57,7 @@ const dnsConfig = {
       // 规则下载地址
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Academic.list",
       // 本地缓存路径
-      path: "./rulesets/southernhu/ChinaDomainLite.list",
+      path: "./rulesets/southernhu/Academic.list",
     },
     ChinaDomainLite: {
       ...ruleProviderCommon,
