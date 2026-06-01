@@ -191,7 +191,7 @@ const dnsConfig = {
         "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
         "interval": 3,  // 每3秒测速一次
         "include-all": false,
-        proxies: ["美国节点","日本节点"],
+        proxies: ["Ai Surpport","新加坡节点","美国节点","日本节点","澳大利亚节点"],
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
        // 代理组: 学术网站
@@ -327,6 +327,7 @@ const dnsConfig = {
         "interval": 5,  // 每5秒测速一次
         "filter": "US|🇺🇸|美国",
         "include-all": true,
+        "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
       },
       {
@@ -339,6 +340,7 @@ const dnsConfig = {
         "interval": 5,  // 每5秒测速一次
         "filter": "JP|🇯🇵|日本",
         "include-all": true,
+        "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
       },
       {
@@ -351,8 +353,35 @@ const dnsConfig = {
         "interval": 5,  // 每5秒测速一次
         "filter": "SG|🇸🇬|新加坡",
         "include-all": true,
+        "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
-      }
+      },
+      {
+        ...groupBaseOption,
+        // 澳大利亚节点中选择延迟最低的
+        name: "澳大利亚节点",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        "filter": "AU|🇦🇺|澳大利亚",
+        "hidden": true,
+        "include-all": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/au.svg",
+      },
+      {
+        ...groupBaseOption,
+        // 支持AI服务的丢
+        name: "Ai Surpport",
+        "type": "url-test",
+        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
+        "interval": 5,  // 每5秒测速一次
+        "filter": "AU|🇦🇺|澳大利亚|SG|🇸🇬|新加坡|JP|🇯🇵|日本|德国|🇩🇪|DE|KR|🇰🇷|韩国",
+        "include-all": true,
+        "hidden": true,
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/au.svg",
+      },
     ];
   
     // 覆盖原配置中的规则
