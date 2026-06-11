@@ -58,3 +58,8 @@ DOMAIN-KEYWORD,steamuserimages
 DOMAIN-KEYWORD,steamcontent
 # Grammarly
 DOMAIN-SUFFIX,grammarly.com
+
+# Fetch API
+DOMAIN-SUFFIX,browserbase.com
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,pythonhosted.org
