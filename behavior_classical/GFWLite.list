@@ -15,6 +15,9 @@ DOMAIN-SUFFIX,*.org
 DOMAIN-SUFFIX,pypi.org
 DOMAIN-SUFFIX,files.pythonhosted.org
 DOMAIN-KEYWORD,pypi
+# openclaw
+DOMAIN-DOMAIN,clawhub.ai
+DOMAIN-KEYWORD,clawhub
 # VSCode
 PROCESS-NAME,Code.exe
 DOMAIN-SUFFIX,visualstudio.com
