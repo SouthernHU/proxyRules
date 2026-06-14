@@ -1,3 +1,15 @@
+# 战地5
+# BFV 进程走代理
+- PROCESS-NAME,bfv.exe
+# EA 平台走代理
+- PROCESS-NAME,EADesktop.exe
+- PROCESS-NAME,Origin.exe
+# EA CDN 下载走直连(避免浪费流量)
+- DOMAIN-SUFFIX,origin-a.akamaihd.net
+- DOMAIN-SUFFIX,cdn.ea.com
+# EA 其他服务走代理
+- DOMAIN-SUFFIX,ea.com
+- DOMAIN-SUFFIX,battlefield.com
 # 战争雷霆
 DOMAIN-KEYWORD,warthunder
 DOMAIN-SUFFIX,warthunder.com,
