@@ -2,6 +2,7 @@
 GEOIP,CN
 
 # Ai中转站
+DOMAIN-SUFFIX,packyapi.ai
 DOMAIN-SUFFIX,ikuncode.cc
 DOMAIN-SUFFIX,api.ikuncode.cc
 
