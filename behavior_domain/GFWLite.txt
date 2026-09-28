@@ -136,3 +136,17 @@ PROCESS-NAME,org.telegram.messenger
 
 # 城市天际线2
 +.paradox-interactive.com
+
+# PyPI
++.pypi.org
++.files.pythonhosted.org
++.pythonhosted.org
+
+# Grammarly
++.grammarly.com
+
+# Fetch API
++.browserbase.com
+
+# Ai中转站
++.packyapi.com

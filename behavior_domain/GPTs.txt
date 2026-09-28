@@ -1,69 +1,112 @@
-# 指定IP的外国网站
-# OpenAI
-+.chatgpt.com
-+.openai.com
-+.chat.openai.com
-# perplexityAi
-+.perplexity
-# ChatGPT第三方Windows客户端https://github.com/lencx/ChatGPT
-PROCESS-NAME,msedgewebview2.exe
-# Google Gemini & Google AI studio
-+.ai.google.dev
-+.apis.google.com
-+.aistudio.google.com
-+.bard.google.com
-+.deepmind.com
-+.deepmind.google
-+.gemini.google.com
-+.generativeai.google
-+.proactivebackend-pa.googleapis.com
-+.apis.google.com
-+.alkalimakersuite-pa.clients6.google.com
-+.makersuite.google.com
-# poe
-+.poe.com
-# 风控
-+.sentry.io
-# OPENAI所用到的服务相关域名,包括Google和CloudFlare的人机验证之类
-+.vimeocdn.com
-+.blob.core.windows.net
-+.googleapis.com
-+.azurefd.net
-+.azureedge.net
-+.cdn.cloudflare.net
-+.hcaptcha.com
-+.akamaized.net
-+.gstatic.com
-+.vimeo.com
-+.googletagmanager.com
-+.f7tk.com
-+.doubleclick.net
-+.google-analytics.com
-+.intercom.io
+# AI 服务规则 (由 behavior_classical/Ai.list 同步)
+# AUTHOR: https://t.me/ddgksf2021
+
+## > Ai general rules
+api.statsig.com
+browser-intake-datadoghq.com
+static.cloudflareinsights.com
++.algolia.net
++.auth0.com
++.cloudflare.com
++.arkoselabs.com
 +.statsigapi.net
 +.featuregates.org
++.identrust.com
++.intercom.io
 +.intercomcdn.com
-+.pki.goog
-+.cloudflareinsights.com
-+.edgecompute.app
-+.compute-pipe.com
-+.stripe.network
-+.gpt3sandbox.com
++.launchdarkly.com
++.segment.io
++.amazonaws.com
++.wp.com
 +.sentry.io
-# 231116新增域名
-+.oaistatic.com
-+.oaiusercontent.com
-# NewBing
-+.bing.com/new
-+.copilot.microsoft.com
-# Claude
++.stripe.com
+
+## > Anthropic/Claude
+cdn.usefathom.com
 +.anthropic.com
 +.claude.ai
-# Google Gemini
-+.generativelanguage.google.com
-+.colab.google.com
-+.apis.google.com
-+.gemini.google.com;
-+.aistudio.google.com
++.claudeusercontent.com
 
+## > Cursor
++.cursor.sh
 
+## > Dify AI
++.dify.ai
+
+## > Google AI (Gemini/Bard)
+ai.google.dev
+aistudio.google.com
+alkalimakersuite-pa.clients6.google.com
+makersuite.google.com
+generativelanguage.googleapis.com
+cloudaicompanion.googleapis.com
++.proactivebackend-pa.googleapis.com
++.bard.google.com
++.gemini.google.com
++.deepmind.com
++.deepmind.google
++.generativeai.google
+
+## > Google Antigravity (IDE)
++.antigravity.google
++.antigravity-unleash.goog
++.com.google.antigravity
++.com.google.antigravity.helper
+play.googleapis.com
++.cloudcode-pa.googleapis.com
++.daily-cloudcode-pa.googleapis.com
++.open-vsx.org
+
+## > JetBrains AI
++.grazie.ai
+
+## > Meta
++.meta.ai
++.meta.com
+
+## > Microsoft Copilot
+api.msn.com
+assets.msn.com
+copilot.microsoft.com
+gateway.bingviz.microsoft.net
+gateway.bingviz.microsoftapp.net
+in.appcenter.ms
+location.microsoft.com
+odc.officeapps.live.com
+r.bing.com
+self.events.data.microsoft.com
+services.bingapis.com
+sydney.bing.com
++.api.microsoftapp.net
++.bing-shopping.microsoft-falcon.io
++.edgeservices.bing.com
+
+## > Midjourney
++.midjourney.com
+
+## > OpenAI/ChatGPT
+openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+openaicomproductionae4b.blob.core.windows.net
+production-openaicom-storage.azureedge.net
++.ai.com
++.chatgpt.com
++.livekit.cloud
++.oaistatic.com
++.oaiusercontent.com
++.openai.com
++.azureedge.net
++.imgix.net
+
+## > Perplexity
+pplx-res.cloudinary.com
++.perplexity.ai
++.pplx.ai
++.perplexity.com
+
+## > Poe
++.poe.com
++.poecdn.net
+
+## > xAI/Grok
++.x.ai
++.grok.com

@@ -1,3 +1,6 @@
+# 西交
++.xjtu.edu.cn
+
 # 学术网站
 +.sciencedirect.com
 +.springer.com
