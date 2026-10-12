@@ -28,6 +28,7 @@ DOMAIN,cdn.usefathom.com
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,claude.com
 
 ## > Github Copilot
 # DOMAIN-KEYWORD, githubcopilot
