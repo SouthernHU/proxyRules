@@ -2,7 +2,7 @@
 +.cn
 
 # Ai中转站
-+.packyapi.com
++.packyapi.ai
 +.ikuncode.cc
 +.api.ikuncode.cc
 
@@ -32,6 +32,8 @@
 # 其他
 +.yuque.com
 +.icloud.com
++.apple.com.cn
++.icloud.com.cn
 
 # OneDrive
 +.1drv.com
@@ -384,6 +386,9 @@ DST-PORT,3389
 +.apple.com.edgekey.net.globalredir.akadns.net
 +.apple.com.edgekey.net
 +.apple.com
++.www.apple.com.edgekey.net.globalredir.akadns.net
++.www.apple.com.edgekey.net
++.www.apple.com
 +.xp.apple.com
 
 # Apple Maps Fix

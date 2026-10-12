@@ -1,6 +1,9 @@
 # 极速机场
 +.xn--mes358acgm99l.com
 
+# 橘色云
++.jusecloud.com
+
 # 火星联盟
 +.hxlm.org
 +.hxlm.io
@@ -24,6 +27,15 @@
 
 # Automa
 +.automa.site
+
+# paraview
++.paraview.org
+
+# CadQuery
+adquery.readthedocs.io
+
+# 油猴脚本
++.greasyfork.org
 
 # Follow
 +.follow.is
@@ -67,3 +79,4 @@
 # 天际线
 +.modscontent.paradox-interactive.com
 +.paradoxplaza.com
++.api.paradox-interactive.com
