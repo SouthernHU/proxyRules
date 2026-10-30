@@ -16,6 +16,7 @@ DOMAIN-SUFFIX,pypi.org
 DOMAIN-SUFFIX,files.pythonhosted.org
 DOMAIN-KEYWORD,pypi
 DOMAIN-SUFFIX, packyapi.com
+DOMAIN-SUFFIX, packyapi.ai
 # openclaw
 DOMAIN-DOMAIN,clawhub.ai
 DOMAIN-KEYWORD,clawhub
