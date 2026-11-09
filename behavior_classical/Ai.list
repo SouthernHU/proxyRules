@@ -53,14 +53,13 @@ DOMAIN,cloudaicompanion.googleapis.com
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,gemini.google.com
+# 全部 google.com 走 Ai 组,避免 Gemini 会话的出口 IP 与其他 Google 请求不一致
+DOMAIN-SUFFIX,google.com
 DOMAIN-SUFFIX,gemini.google
-DOMAIN,waa-pa.clients6.google.com
 DOMAIN,waa-pa.googleapis.com
 DOMAIN,robinfrontend-pa.googleapis.com
 DOMAIN,geller-pa.googleapis.com
 DOMAIN,aisandbox-pa.googleapis.com
-DOMAIN,signaler-pa.clients6.google.com
-DOMAIN,apis.google.com
 DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,deepmind.google
 DOMAIN-SUFFIX,generativeai.google
