@@ -53,6 +53,14 @@ DOMAIN,cloudaicompanion.googleapis.com
 DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,gemini.google
+DOMAIN,waa-pa.clients6.google.com
+DOMAIN,waa-pa.googleapis.com
+DOMAIN,robinfrontend-pa.googleapis.com
+DOMAIN,geller-pa.googleapis.com
+DOMAIN,aisandbox-pa.googleapis.com
+DOMAIN,signaler-pa.clients6.google.com
+DOMAIN,apis.google.com
 DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,deepmind.google
 DOMAIN-SUFFIX,generativeai.google

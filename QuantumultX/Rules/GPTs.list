@@ -7,6 +7,13 @@ HOST-SUFFIX,bard.google.com,GPTs
 HOST-SUFFIX,deepmind.com,GPTs
 HOST-SUFFIX,deepmind.google,GPTs
 HOST-SUFFIX,gemini.google.com,GPTs
+HOST-SUFFIX,gemini.google,GPTs
+HOST,waa-pa.clients6.google.com,GPTs
+HOST,waa-pa.googleapis.com,GPTs
+HOST,robinfrontend-pa.googleapis.com,GPTs
+HOST,geller-pa.googleapis.com,GPTs
+HOST,aisandbox-pa.googleapis.com,GPTs
+HOST,signaler-pa.clients6.google.com,GPTs
 HOST-SUFFIX,generativeai.google,GPTs
 HOST-SUFFIX,proactivebackend-pa.googleapis.com,GPTs
 HOST-SUFFIX,apis.google.com,GPTs

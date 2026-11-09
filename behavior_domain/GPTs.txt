@@ -43,6 +43,14 @@ cloudaicompanion.googleapis.com
 +.proactivebackend-pa.googleapis.com
 +.bard.google.com
 +.gemini.google.com
++.gemini.google
+waa-pa.clients6.google.com
+waa-pa.googleapis.com
+robinfrontend-pa.googleapis.com
+geller-pa.googleapis.com
+aisandbox-pa.googleapis.com
+signaler-pa.clients6.google.com
+apis.google.com
 +.deepmind.com
 +.deepmind.google
 +.generativeai.google
