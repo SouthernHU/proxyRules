@@ -78,6 +78,13 @@ const dnsConfig = {
       url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Ai.list",
       path: "./rulesets/southernhu/Ai.list",
     },
+    Claude: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      format: "text",
+      url: "https://raw.githubusercontent.com/SouthernHU/proxyRules/refs/heads/main/behavior_classical/Claude.list",
+      path: "./rulesets/southernhu/Claude.list",
+    },
     GFWMedia: {
       ...ruleProviderCommon,
       behavior: "classical",
@@ -123,6 +130,13 @@ const dnsConfig = {
   };
   // 规则列表
   const rules = [
+    // Reject Claude UDP before an unsupported node can fall through.
+    "AND,((NETWORK,udp),(RULE-SET,Claude)),REJECT",
+    "RULE-SET,Claude,Ai优选",
+    // Antigravity 登录与服务请求使用同一代理组
+    "DOMAIN,oauth2.googleapis.com,Ai",
+    "DOMAIN,accounts.google.com,Ai",
+    "DOMAIN,aicode.googleapis.com,Ai",
     // 自定义规则
     "DOMAIN-SUFFIX,googleapis.cn,节点选择", // Google服务
     "DOMAIN-SUFFIX,gstatic.com,节点选择", // Google静态资源
@@ -176,6 +190,8 @@ const dnsConfig = {
     // 速度筛选
     const fastFillter = "x3|x2|2x|3x|1.5x|x1.5";
 
+    // 私有订阅在 Clash Verge 全局扩展配置 Merge.yaml 的 proxy-providers 中维护。
+
     // 覆盖原配置中DNS配置
     config["dns"] = dnsConfig;
   
@@ -187,11 +203,24 @@ const dnsConfig = {
         // 按照列表中的节点顺序依次使用
         name: "Ai",
         "type": "select",
-        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
+        "tolerance": 500,  // 延迟容忍度,超过100ms的节点将被淘汰
         "fallback": 5,  // 备用节点数量,保留延迟最低的5个节点
         "interval": 3,  // 每3秒测速一次
         "include-all": false,
-        proxies: ["Ai Surpport","新加坡节点","美国节点","日本节点","澳大利亚节点"],
+        proxies: ["Ai优选","美国节点","新加坡节点","日本节点","负载均衡(轮询)","负载均衡(哈希)"],
+        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
+      },
+      // 代理组: Ai优选(赔钱机场 美国圣何塞05/06)
+      {
+        ...groupBaseOption,
+        name: "Ai优选",
+        type: "select",
+        proxies: ["REJECT"], // Missing saved selection defaults to blocking.
+        use: config["proxy-providers"]?.peiqian ? ["peiqian"] : [],
+        filter: "^赔钱-🇺🇸美国圣何塞0[567](-0\\.1倍| \\| 三网推荐)$",
+        "empty-fallback": "REJECT",
+        "include-all": false,
+
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/chatgpt.svg",
       },
        // 代理组: 学术网站
@@ -327,7 +356,6 @@ const dnsConfig = {
         "interval": 5,  // 每5秒测速一次
         "filter": "US|🇺🇸|美国",
         "include-all": true,
-        "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/us.svg",
       },
       {
@@ -340,7 +368,6 @@ const dnsConfig = {
         "interval": 5,  // 每5秒测速一次
         "filter": "JP|🇯🇵|日本",
         "include-all": true,
-        "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/jp.svg",
       },
       {
@@ -353,7 +380,6 @@ const dnsConfig = {
         "interval": 5,  // 每5秒测速一次
         "filter": "SG|🇸🇬|新加坡",
         "include-all": true,
-        "hidden": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/sg.svg",
       },
       {
@@ -365,25 +391,19 @@ const dnsConfig = {
         "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
         "interval": 5,  // 每5秒测速一次
         "filter": "AU|🇦🇺|澳大利亚",
-        "hidden": true,
         "include-all": true,
         icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/au.svg",
-      },
-      {
-        ...groupBaseOption,
-        // 支持AI服务的丢
-        name: "Ai Surpport",
-        "type": "url-test",
-        "tolerance": 100,  // 延迟容忍度,超过100ms的节点将被淘汰
-        "fallback": 10,  // 备用节点数量,保留延迟最低的10个节点
-        "interval": 5,  // 每5秒测速一次
-        "filter": "AU|🇦🇺|澳大利亚|SG|🇸🇬|新加坡|JP|🇯🇵|日本|德国|🇩🇪|DE|KR|🇰🇷|韩国",
-        "include-all": true,
-        "hidden": true,
-        icon: "https://fastly.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/au.svg",
-      },
+      }
     ];
   
+    // provider 节点不要混进原有 include-all 组,保持原行为(只含当前 profile 的节点)
+    config["proxy-groups"].forEach((g) => {
+      if (g["include-all"] === true) {
+        delete g["include-all"];
+        g["include-all-proxies"] = true;
+      }
+    });
+
     // 覆盖原配置中的规则
     config["rule-providers"] = ruleProviders;
     config["rules"] = rules;

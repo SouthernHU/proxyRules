@@ -1,0 +1,11 @@
+# Claude official services and selected telemetry endpoints.
+# Source: https://code.claude.com/docs/en/network-config
+# Reviewed: 2026-11-10; not a complete record of all client traffic.
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,claudemcpcontent.com
+DOMAIN,cdn.usefathom.com
+DOMAIN,http-intake.logs.us5.datadoghq.com
+DOMAIN,browser-intake-us5-datadoghq.com
