@@ -7,9 +7,7 @@
 
 ## ⚠️ 重要提示
 
-> **不建议使用 `domain` 类别的脚本和规则**  
-> `behavior_domain` 目录和 `globalScript_clashVerge_domain.js` 已经很长时间没有维护,可能存在兼容性问题.  
-> **强烈推荐使用 `classical` 类型的脚本和规则**,它们会持续更新和优化.
+> Clash Verge 规则统一维护在 `rules/`，使用 `globalScript_clashVerge_classical.js`。旧 domain 版本已移除，原使用者需切换脚本。
 
 > **QuantumultX 规则尚未完成**  
 > QuantumultX 相关的规则和重写配置还在完善中,暂不建议使用.  
@@ -62,6 +60,8 @@ https://raw.githubusercontent.com/SouthernHU/proxyRules/main/globalScript_clashV
 
 > ⚠️ **注意**: Clash Verge 的全局扩展脚本不支持订阅功能,必须手动复制粘贴.
 
+远程规则列表由 Mihomo 每 30 分钟更新。代理组、脚本逻辑有变化时，仍需重新粘贴脚本。
+
 ### QuantumultX (不推荐)
 
 > ⚠️ **暂不建议使用**: QuantumultX 相关规则尚未完善,建议使用 Clash Verge.
@@ -103,7 +103,6 @@ https://raw.githubusercontent.com/SouthernHU/proxyRules/main/QuantumultX/Rewrite
 | 脚本类型 | 文件名 | 状态 | 推荐 |
 |---------|--------|------|------|
 | **Classical** | `globalScript_clashVerge_classical.js` | ✅ 持续维护 | ⭐⭐⭐⭐⭐ |
-| ~~Domain~~ | ~~`globalScript_clashVerge_domain.js`~~ | ❌ 已停止维护 | ❌ 不推荐 |
 
 ### 配置说明
 
@@ -131,33 +130,38 @@ https://raw.githubusercontent.com/SouthernHU/proxyRules/main/QuantumultX/Rewrite
 
 | 代理组 | 类型 | 说明 |
 |-------|------|------|
-| **Ai** | fallback | AI 服务专用,自动故障转移 |
-| **国内常用** | select | 国内域名直连或负载均衡 |
-| **海外常用** | fallback | 常用海外网站,故障转移 |
-| **海外流媒体** | fallback | 流媒体服务,故障转移 |
-| **海外完整** | fallback | 完整海外规则,故障转移 |
-| **游戏** | load-balance | 游戏流量负载均衡 |
-| **全局拦截** | select | 广告拦截控制 |
+| **Ai** | select | 手动选择 AI 服务使用的节点组；候选项包含自动选点和负载均衡组 |
+| **Ai优选** | select | Claude 官方服务直接使用的分组；手动选择允许的节点或 `REJECT`，不自动故障转移；缺少节点配置时仅保留 `REJECT` |
+| **学术网站** | select | 手动选择 `SchoolComputers`、直连或哈希负载均衡 |
+| **国内常用** | select | 手动选择直连或哈希负载均衡 |
+| **海外常用** | fallback | 按候选顺序使用可用项，允许故障转移；候选项包含负载均衡和地区分组 |
+| **海外流媒体** | fallback | 按候选顺序使用可用项，允许故障转移；该组本身不执行负载均衡 |
+| **海外完整** | fallback | 按候选顺序使用可用项，允许故障转移 |
+| **游戏** | url-test | 按节点名称筛选日本节点，再根据测速自动选择 |
+| **全局拦截** | select | 手动选择拒绝连接或直连 |
 
 ### 辅助代理组
 
 | 代理组 | 类型 | 说明 |
 |-------|------|------|
-| **节点选择** | url-test | 自动选择最优节点 |
-| **延迟选优** | url-test | 延迟最低节点 |
-| **故障转移** | fallback | 自动故障转移 |
-| **负载均衡(哈希)** | load-balance | 哈希策略负载均衡 |
-| **负载均衡(轮询)** | load-balance | 轮询策略负载均衡 |
-| **美国节点** | url-test | 美国节点自动选择 |
-| **日本节点** | url-test | 日本节点自动选择 |
-| **新加坡节点** | url-test | 新加坡节点自动选择 |
+| **节点选择** | url-test | 根据测速自动选择，候选项包含订阅节点及负载均衡、延迟选优、故障转移组 |
+| **延迟选优** | url-test | 在当前订阅节点中根据测速自动选择，并采用设置的延迟切换容差 |
+| **故障转移** | fallback | 在当前订阅节点中按顺序使用可用项，允许故障转移 |
+| **负载均衡(哈希)** | load-balance | 使用 `consistent-hashing` 策略分配连接 |
+| **负载均衡(轮询)** | load-balance | 使用 `round-robin` 策略分配连接 |
+| **美国节点** | url-test | 按节点名称筛选美国节点，再根据测速自动选择 |
+| **日本节点** | url-test | 按节点名称筛选日本节点，再根据测速自动选择 |
+| **新加坡节点** | url-test | 按节点名称筛选新加坡节点，再根据测速自动选择 |
+| **澳大利亚节点** | url-test | 按节点名称筛选澳大利亚节点，再根据测速自动选择 |
+
+`select` 只表示该层由用户手动选择候选项。如果选中的是自动选点、故障转移或负载均衡子组，子组仍按自身策略运行，因此不代表实际出口节点固定。
 
 ## 📁 规则说明
 
-### Clash Verge 规则集 (behavior_classical)
+### Clash Verge 规则集 (rules)
 
 ```
-behavior_classical/
+rules/
 ├── ADBlocking.list      # 广告拦截规则
 ├── Ai.list              # AI 服务规则(ChatGPT、Claude 等)
 ├── ChinaDomainLite.list # 国内常用域名(精简版)

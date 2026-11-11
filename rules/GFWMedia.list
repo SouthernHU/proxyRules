@@ -57,3 +57,6 @@ DOMAIN-SUFFIX,nflxvideo.net
 
 # Spotify
 DOMAIN-SUFFIX,spotify.com
+
+# 从旧域名列表迁移的补充规则
+DOMAIN-SUFFIX,yt3.ggpht.com
