@@ -216,8 +216,8 @@ const dnsConfig = {
       {
         ...groupBaseOption,
         name: "Ai优选",
-        type: "select",
-        proxies: ["REJECT"], // 无有效的已保存选择时，默认选中阻断项。
+        type: "load-balance",
+        strategy: "consistent-hashing",
         use: aiUse,
         filter: aiSelection.filter || "^$",
         "empty-fallback": "REJECT",
