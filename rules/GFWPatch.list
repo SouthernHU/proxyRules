@@ -77,3 +77,6 @@ DOMAIN-SUFFIX,api.paradox-interactive.com
 # 从旧域名列表迁移的补充规则
 DOMAIN-SUFFIX,follow.is
 DOMAIN-SUFFIX,xn--mes358acgm99l.com
+
+# GrabCAD
+DOMAIN-SUFFIX,grabcad.com
