@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/SouthernHU/proxyRules)](https://github.com/SouthernHU/proxyRules/blob/main/LICENSE)
 [![Stars](https://img.shields.io/github/stars/SouthernHU/proxyRules)](https://github.com/SouthernHU/proxyRules/stargazers)
 
-一个精心维护的代理规则集合,支持 Clash Verge 和 QuantumultX,包含智能分流规则、广告拦截和多种代理策略配置.
+代理规则集合，包含 Clash Verge 分流脚本、广告规则和代理组配置。QuantumultX 部分尚未完成。
 
 ## ⚠️ 重要提示
 
@@ -27,7 +27,6 @@
 
 - 🚀 **智能分流** - 基于域名和 IP 的精准分流规则
 - 🛡️ **广告拦截** - 高效的广告和追踪拦截规则
-- 🎮 **游戏优化** - 针对游戏流量的专属优化
 - 🤖 **AI 服务支持** - ChatGPT 等 AI 服务的专用规则
 - 🎬 **流媒体解锁** - 支持主流海外流媒体平台
 - ⚡ **负载均衡** - 多种负载均衡策略可选
@@ -106,23 +105,36 @@ https://raw.githubusercontent.com/SouthernHU/proxyRules/main/QuantumultX/Rewrite
 
 ### 配置说明
 
-脚本会自动配置以下内容:
+脚本负责生成 DNS、完整代理组、规则源和基础规则。Merge 通过专用字段提供附加内容，避免与生成字段重名。TUN、节点源等其他字段继续保留。
+
+- `Merge.yaml` 是附加节点模板；`prepend-proxies` 由脚本读取并加入订阅节点。
+- `script-group-settings` 为 Ai优选 和 ProxySeller前置提供 `use`、`filter`；通用自动组及国家组的节点范围由脚本统一生成。
+- `script-prepend-rules` 中的规则放在 Claude、Ai 之后，其他基础规则之前，按列表顺序匹配。
+- 以上专用字段会在脚本处理后移除，不交给内核。不要在 Merge 中重复定义脚本生成的 DNS、`proxy-groups`、`rule-providers` 和 `rules`。
+- 从旧配置迁移时，将用来提供 `use`/`filter` 的 `proxy-groups` 改名为 `script-group-settings`，将自定义 `rules` 改名为 `script-prepend-rules`；Merge 和脚本需要一起更新。
+- `ruleProviders` 定义下载源，`rules` 定义分流目标和匹配顺序。
+- 所有规则下载地址均为完整的 GitHub raw 链接，粘贴到 Clash Verge 后不依赖本仓库的本地路径。
+- 规则源的 `path` 是 Mihomo 的本地缓存位置，不是下载地址。
 
 #### DNS 配置
 - 国内 DNS: `119.29.29.29`, `180.184.1.1`
 - 国外 DNS: `tls://8.8.8.8`, `tls://1.1.1.1`, `tls://9.9.9.9`
-- 支持 DoH/DoT 加密 DNS
-- 智能 DNS 分流
+- 默认加密 DNS 使用 DoT；国内及指定服务域名使用单独的 DNS。
+- 私有域名使用系统 DNS；代理节点域名使用 `foreignDNS`。
 
 #### 规则集
+- **Academic** - 学术网站
+- **Apple** - Apple 服务，使用外部规则源
+- **GFW_ACL4SSR** - 外部海外规则补充
 - **ChinaDomainLite** - 国内常用域名(精简版)
 - **GFWLite** - 海外常用域名(精简版)
 - **GFWMedia** - 海外流媒体专用
 - **GFWPatch** - 海外完整规则补充
 - **Ai** - AI 服务(ChatGPT、Claude 等)
-- **Game** - 游戏相关规则
+- **Claude** - Claude 官方服务及部分遥测域名；TCP 使用 `Claude` 手动选择组，UDP 拒绝
 - **ADBlocking** - 广告拦截规则
-- **Microsoft** - Microsoft 服务规则
+
+仓库另有 `Microsoft.list`，当前脚本未加载。
 
 ## 🎯 代理组说明
 
@@ -130,29 +142,31 @@ https://raw.githubusercontent.com/SouthernHU/proxyRules/main/QuantumultX/Rewrite
 
 | 代理组 | 类型 | 说明 |
 |-------|------|------|
-| **Ai** | select | 手动选择 AI 服务使用的节点组；候选项包含自动选点和负载均衡组 |
-| **Ai优选** | select | Claude 官方服务直接使用的分组；手动选择允许的节点或 `REJECT`，不自动故障转移；缺少节点配置时仅保留 `REJECT` |
+| **Ai** | select | 手动选择 AI 服务使用的节点组；候选项包含 `ProxySeller`、自动选点和负载均衡组 |
+| **Claude** | select | 选择 `ProxySeller`，或选择 `Ai` 跟随通用 AI 分组；首次加载默认选择 `ProxySeller` |
+| **ProxySeller** | select | 从独立节点源使用 `ProxySeller-ISP`，由节点源指定前置代理；未配置该节点时仅提供 `REJECT`；不参与通用自动选点 |
+| **Ai优选** | load-balance | 使用 `consistent-hashing` 分配连接；可供专用出口中转，缺少允许的节点时使用 `REJECT` |
 | **学术网站** | select | 手动选择 `SchoolComputers`、直连或哈希负载均衡 |
 | **国内常用** | select | 手动选择直连或哈希负载均衡 |
 | **海外常用** | fallback | 按候选顺序使用可用项，允许故障转移；候选项包含负载均衡和地区分组 |
 | **海外流媒体** | fallback | 按候选顺序使用可用项，允许故障转移；该组本身不执行负载均衡 |
 | **海外完整** | fallback | 按候选顺序使用可用项，允许故障转移 |
-| **游戏** | url-test | 按节点名称筛选日本节点，再根据测速自动选择 |
 | **全局拦截** | select | 手动选择拒绝连接或直连 |
 
 ### 辅助代理组
 
 | 代理组 | 类型 | 说明 |
 |-------|------|------|
-| **节点选择** | url-test | 根据测速自动选择，候选项包含订阅节点及负载均衡、延迟选优、故障转移组 |
-| **延迟选优** | url-test | 在当前订阅节点中根据测速自动选择，并采用设置的延迟切换容差 |
-| **故障转移** | fallback | 在当前订阅节点中按顺序使用可用项，允许故障转移 |
+| **节点选择** | url-test | 根据测速自动选择，候选项包含公共 provider 节点及负载均衡、延迟选优、故障转移组 |
+| **延迟选优** | url-test | 在公共 provider 节点中根据测速自动选择，并采用设置的延迟切换容差 |
+| **故障转移** | fallback | 在公共 provider 节点中按顺序使用可用项，允许故障转移 |
 | **负载均衡(哈希)** | load-balance | 使用 `consistent-hashing` 策略分配连接 |
 | **负载均衡(轮询)** | load-balance | 使用 `round-robin` 策略分配连接 |
 | **美国节点** | url-test | 按节点名称筛选美国节点，再根据测速自动选择 |
 | **日本节点** | url-test | 按节点名称筛选日本节点，再根据测速自动选择 |
 | **新加坡节点** | url-test | 按节点名称筛选新加坡节点，再根据测速自动选择 |
-| **澳大利亚节点** | url-test | 按节点名称筛选澳大利亚节点，再根据测速自动选择 |
+
+`ProxySeller-ISP` 默认使用 `dialer-proxy: DIRECT`，即本机直接连接 ISP，目标网站仍经 ISP 出口访问。需要机场中转时，可将该字段改为可用代理组的名称。
 
 `select` 只表示该层由用户手动选择候选项。如果选中的是自动选点、故障转移或负载均衡子组，子组仍按自身策略运行，因此不代表实际出口节点固定。
 
@@ -162,10 +176,11 @@ https://raw.githubusercontent.com/SouthernHU/proxyRules/main/QuantumultX/Rewrite
 
 ```
 rules/
+├── Academic.list        # 学术网站规则
 ├── ADBlocking.list      # 广告拦截规则
 ├── Ai.list              # AI 服务规则(ChatGPT、Claude 等)
 ├── ChinaDomainLite.list # 国内常用域名(精简版)
-├── Game.list            # 游戏相关规则
+├── Game.list            # 保留的游戏规则，当前脚本未加载
 ├── GFWLite.list         # 海外常用域名(精简版)
 ├── GFWMedia.list        # 海外流媒体规则
 ├── GFWPatch.list        # 海外规则补充
@@ -210,9 +225,21 @@ const chinaDNS = ["119.29.29.29", "180.184.1.1"];
 const foreignDNS = ["tls://8.8.8.8", "tls://1.1.1.1", "tls://9.9.9.9"];
 ```
 
+### 调整代理组
+
+- `groupBaseOption` 提供公共参数；组内同名字段覆盖默认值。
+- `regionGroupOption` 提供地区组参数；切换容差为 100 毫秒，检查间隔为 5 秒。
+- 节点选择、延迟选优、故障转移、两个负载均衡组，以及美国、日本、新加坡组，统一使用输入配置中全部公共 `proxy-providers`；专用 `ProxySeller-ISP` 不纳入。
+- 国家组的地区筛选条件由脚本维护，不需要在 Merge 中逐组配置 `use`。
+- 没有公共 provider 时，以上八组使用当前订阅的直接节点；专用 ISP 节点仍排除，空组使用 `REJECT`。
+- Ai优选 和 ProxySeller前置继续使用各自的专用设置，不跟随公共范围扩大。
+- `overseasProxies` 是海外流媒体和海外完整的候选顺序；海外常用仍优先使用哈希组。
+- `iconBase` 是公共图标地址前缀。
+- 分流顺序为 Claude、Ai、Merge 附加规则、其他基础规则；界面中 Claude、Ai 位于最前，Ai优选、ProxySeller、ProxySeller前置位于美国节点上方。
+
 ### 添加自定义规则
 
-在 `rules` 数组中添加:
+在 `rules` 数组中添加。规则从上到下匹配，先匹配的规则优先；调整顺序会改变分流结果。
 
 ```javascript
 const rules = [
@@ -221,6 +248,17 @@ const rules = [
   // ... 其他规则
 ];
 ```
+
+### 本地检查
+
+使用 Node.js，无需安装依赖：
+
+```powershell
+node --check globalScript_clashVerge_classical.js
+node --test tests/globalScript.test.cjs
+```
+
+测试覆盖地区组生成、节点源过滤、专用输入字段、规则优先级和 raw 下载地址；不验证网络连通性或实际出口。
 
 ## 📊 更新频率
 

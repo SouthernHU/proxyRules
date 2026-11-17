@@ -1,0 +1,29 @@
+# 严格模式附加节点与节点源模板。
+# 只使用 JMS 和 ProxySeller ISP：JMS 是前置代理，ISP 是最终出口。
+# 节点名为 ProxySeller-ISP-Node，避免与同名代理组冲突。
+prepend-proxies:
+  - name: "ProxySeller-ISP-Node"
+    type: socks5
+    server: isp.example.invalid # 替换为 ISP 地址。
+    port: 1080                  # 替换为 SOCKS5 端口。
+    username: REPLACE_WITH_ISP_USERNAME
+    password: REPLACE_WITH_ISP_PASSWORD
+    udp: false
+    # 先连接 JMS 前置组，再由 ISP 连接目标域名。
+    dialer-proxy: "ProxySeller前置"
+
+proxy-providers:
+  jms:
+    type: http
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    header:
+      User-Agent:
+        - clash-verge/v2.4.2
+    url: https://example.invalid/jms-subscription # 替换为 JMS 订阅地址，不得提交真实地址。
+    path: ./proxy_providers/jms.yaml
+    override:
+      additional-prefix: JustMySocks-

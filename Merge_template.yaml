@@ -1,0 +1,18 @@
+# 附加节点模板：由全局脚本读取 prepend-proxies，再合入订阅节点。
+prepend-proxies:
+# 校园网方式，通过Tailscale访问内网节点，Clash Verge 仅作为本地代理
+  - name: "SchoolComputers"
+    type: http
+    server: 172.XX.XX.XX      # 替换为虚拟局域网内学校主机的 IP。
+    port: 7897                # 学校主机 Clash Verge 的 HTTP 或混合代理端口。
+    udp: false
+# 从 ProxySeller 或其他服务商订阅的 ISP 通道节点，需在订阅中获取
+  - name: "ProxySeller-ISP"
+    type: socks5
+    server: isp.example.invalid # 替换为订单中的 ISP 地址。
+    port: 1080 # 占位值，替换为订单中的 SOCKS5 端口。
+    username: REPLACE_WITH_ISP_USERNAME
+    password: REPLACE_WITH_ISP_PASSWORD
+    udp: false
+    dialer-proxy: "DIRECT" # 本机直接连接 ISP，目标网站仍经 ISP 出口访问。
+
